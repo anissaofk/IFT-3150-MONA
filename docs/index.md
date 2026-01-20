@@ -25,7 +25,7 @@ title: Vue d'ensemble du projet
 
 ### Contexte
 
-> Présentez le contexte général dans lequel s’inscrit votre projet (social, organisationnel, technologique, éducatif, environnemental, etc.).
+<!-- > Présentez le contexte général dans lequel s’inscrit votre projet (social, organisationnel, technologique, éducatif, environnemental, etc.). -->
 
 ![Texte alternatif](assets/logo.jpg){style="display:block; margin: 0 auto; width:30%; height:40%;"}
 
@@ -35,15 +35,15 @@ Le projet s’inscrit dans le contexte de la valorisation du patrimoine culturel
 
 ### Problématique
 
-> Décrivez le problème central ou la question de recherche que votre projet cherche à adresser, pourquoi s'y intéresser et les faiblesses des solutions actuelles.
-> Le problème doit pouvoir être compris indépendamment de la solution envisagée.
+<!-- > Décrivez le problème central ou la question de recherche que votre projet cherche à adresser, pourquoi s'y intéresser et les faiblesses des solutions actuelles.
+> Le problème doit pouvoir être compris indépendamment de la solution envisagée. -->
 
 L’accès et la découverte de l’art public et du patrimoine culturel sont souvent limités par des barrières sociales, éducatives et technologiques. Malgré l’abondance d’œuvres et de lieux culturels à Montréal, plusieurs citoyen·ne·s n’ont pas les outils ou les opportunités d’explorer ces richesses de manière engageante. Il existe un manque de médiation interactive et de sensibilisation inclusive qui combine culture, technologie et engagement communautaire.
 
 ### Proposition et objectifs
 
-> Présentez votre proposition de projet et les objectifs visés. Expliquez en quoi votre approche répond à la problématique identifiée.
-> Assurez-vous d'avoir, dans la mesure du possible, des objectifs mesurables, raisonnnables dans le temps et non redondants entre eux.
+<!-- > Présentez votre proposition de projet et les objectifs visés. Expliquez en quoi votre approche répond à la problématique identifiée.
+> Assurez-vous d'avoir, dans la mesure du possible, des objectifs mesurables, raisonnnables dans le temps et non redondants entre eux. -->
 
 L’objectif du projet est de développer et promouvoir une plateforme culturelle numérique et participative (basée sur l’application MONA) ainsi que des parcours de médiation culturelle qui:
 
@@ -57,7 +57,7 @@ L’objectif du projet est de développer et promouvoir une plateforme culturell
 
 ### Méthodologie
 
-> Expliquez comment vous comptez aborder le projet : démarche générale, grandes étapes prévues, itérations, types de validations envisagées.
+<!-- > Expliquez comment vous comptez aborder le projet : démarche générale, grandes étapes prévues, itérations, types de validations envisagées. -->
 
 La méthodologie adoptée repose sur une approche d’observation, d’analyse et de contribution à un projet existant.
 
@@ -77,7 +77,7 @@ Cette démarche permet de s’inscrire dans une logique de collaboration et d’
 
 ### Validation et Évaluation
 
-> Indiquez comment vous évaluerez que votre solution répond aux objectifs du projet (ex. scénarios d’usage, tests, retours utilisateurs, indicateurs qualitatifs ou quantitatifs).
+<!-- > Indiquez comment vous évaluerez que votre solution répond aux objectifs du projet (ex. scénarios d’usage, tests, retours utilisateurs, indicateurs qualitatifs ou quantitatifs). -->
 
 L’évaluation du travail reposera principalement sur :
 
@@ -91,7 +91,7 @@ L’évaluation du travail reposera principalement sur :
 
 ## Équipe
 
-> Présentez les membres de l’équipe et le rôle principal de chacun dans le projet.
+<!-- > Présentez les membres de l’équipe et le rôle principal de chacun dans le projet. -->
 
 - Anissa Ould Ferroukh Développement serveur.
 - Camille Delattre Direction des opérations et coordinatrice à la structuration des données
@@ -108,11 +108,11 @@ L’évaluation du travail reposera principalement sur :
 
 ## Échéancier
 
-!!! info
 Le suivi complet est disponible dans la page [Suivi de projet](suivi.md).
 
-| Activités              | Début   | Fin     | Livrable               | Statut      |
-| ---------------------- | ------- | ------- | ---------------------- | ----------- |
-| Ouverture de projet    | 12 jan. | 12 jan. | Proposition de projet  | ✅ Terminé  |
-| Études préliminaires   | 12 jan. | 23 jan. | Document d'analyse     | 🔄 En cours |
-| Présentation + Rapport | 17 avr. | 30 avr. | Présentation + Rapport | ⏳ À venir  |
+| Activités                      | Début   | Fin     | Livrable               | Statut      |
+| ------------------------------ | ------- | ------- | ---------------------- | ----------- |
+| Réunion d'intégration          | 12 jan. | 12 jan. | Notes de compréhention | ✅ Terminé  |
+| Analyse / Études préliminaires | 12 jan. | 23 jan. | Document d'analyse     | 🔄 En cours |
+| Développement / Contribution   | 23 jan. | 17 jan. | Modules / Ajouts       | 🔄 En cours |
+| Présentation + Rapport         | 17 avr. | 30 avr. | Présentation + Rapport | ⏳ À venir  |

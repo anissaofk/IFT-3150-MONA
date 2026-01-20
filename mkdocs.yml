@@ -20,21 +20,21 @@ theme:
     - content.code.annotate
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: yellow
+      accent: yellow
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: yellow
+      accent: yellow
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
   font:
     text: Roboto
     code: Roboto Mono
-    
+
 copyright: "&copy; 2026 <b>DIRO</b> &ndash; Template de site pour le cours IFT3150 <br>Département d'informatique et de recherche opérationnelle <br>Université de Montréal"
 
 repo_name: ift3150-template
@@ -68,16 +68,15 @@ markdown_extensions:
 plugins:
   - search
 
-
 nav:
   - Vue d'ensemble: index.md
   - Suivi: suivi.md
   - Résumé: resume.md
   - Rapport:
-    - Introduction: rapport/index.md
-    - Études préliminaires: rapport/analyse.md
-    - Conception: rapport/conception.md
-    - Implémentation: rapport/implementation.md
-    - Tests & Évaluation: rapport/evaluation.md
-    - Discussion: rapport/resultat.md
-    - Références: rapport/references.md
+      - Introduction: rapport/index.md
+      - Études préliminaires: rapport/analyse.md
+      - Conception: rapport/conception.md
+      - Implémentation: rapport/implementation.md
+      - Tests & Évaluation: rapport/evaluation.md
+      - Discussion: rapport/resultat.md
+      - Références: rapport/references.md

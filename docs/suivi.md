@@ -19,7 +19,7 @@ title: Suivi du projet
 
 ---
 
-## Semaine 1 (12–18 janvier)
+## **Semaine 1 (12–18 janvier)**
 
 ### Objectifs de la période
 
@@ -54,7 +54,9 @@ title: Suivi du projet
 !!! warning "Difficultés" - Problème de configuration du plugin Mermaid - Confusion entre `mkdocs-mermaid2-plugin` (pip)
 et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correcte dans `mkdocs.yml` -->
 
-## Semaine 2 (19–25 janvier)
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 2 (19–25 janvier)**
 
 ### Objectifs de la période
 
@@ -71,10 +73,10 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 - Effectuer l'installation ainsi que la configuration de l'environement de développement
 - Familiarisation avec la librérie Laravel
 
-### Difficultés rencontrées
+<!-- ### Difficultés rencontrées
 
 > À compléter uniquement si des obstacles ont eu un impact réel
 > sur l’avancement du projet.
 
-<!-- !!! warning "Difficultés" - Problème de configuration du plugin Mermaid - Confusion entre `mkdocs-mermaid2-plugin` (pip)
+!!! warning "Difficultés" - Problème de configuration du plugin Mermaid - Confusion entre `mkdocs-mermaid2-plugin` (pip)
 et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correcte dans `mkdocs.yml` -->
