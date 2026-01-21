@@ -69,8 +69,8 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 
 - Compléter la page de suivi pour cette semaine concernant les rapports hebdomadaires
 - Participation à une réunion avec l’équipe (Weekly Meeting)
-- Lécture de la documentation concernant l'architecture du projet sur le Wiki.
-- Effectuer l'installation ainsi que la configuration de l'environement de développement
+- Lecture de la documentation concernant l'architecture du projet sur le Wiki.
+- Effectuer l'installation ainsi que la configuration de l'environnement de développement
 - Familiarisation avec la librérie Laravel
 
 <!-- ### Difficultés rencontrées
