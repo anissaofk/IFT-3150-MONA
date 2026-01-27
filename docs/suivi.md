@@ -62,6 +62,7 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 
 - Effectuer l'installation des outils et logiciels nécessaires
 - Comprendre l’organisation de l’équipe et les outils utilisés
+- Explorer le processus ETL en quoi il pourrait nous servir au sein du projet
 
 ### Travail réalisé
 
@@ -72,6 +73,27 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 - Lecture de la documentation concernant l'architecture du projet sur le Wiki.
 - Effectuer l'installation ainsi que la configuration de l'environnement de développement
 - Familiarisation avec la librérie Laravel
+- Participation à une réunion avec Corélie pour qu'elle puisse m'expliquer la dernière version de l'API
+- Recherche sur le modèle ETL et comment les outils OpenRefine ainsi que Apache Airflow peuvent opérer au niveau du processus
+
+Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
+
+<div style="position: relative; width: 100%; margin: 2rem auto;">
+<p style="text-align:center; font-style: italic; margin-top: -1rem;">
+  Cliquer sur le schéma pour l’ouvrir en plein écran
+</p>
+  <a href="/pdfs/ETL_process_num1.pdf" target="_blank"
+     style="position:absolute; inset:0; z-index:10;">
+  </a>
+
+<object
+        data="/pdfs/ETL_process_num1.pdf"
+        type="application/pdf"
+        width="100%"
+        height="550">
+</object>
+
+</div>
 
 <!-- ### Difficultés rencontrées
 
