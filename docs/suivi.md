@@ -82,12 +82,12 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 <p style="text-align:center; font-style: italic; margin-top: -1rem;">
   Cliquer sur le schéma pour l’ouvrir en plein écran
 </p>
-  <a href="/pdfs/ETL_process_num1.pdf" target="_blank"
+  <a href="../pdfs/ETL_process_num1.pdf" target="_blank"
      style="position:absolute; inset:0; z-index:10;">
   </a>
 
 <object
-        data="/pdfs/ETL_process_num1.pdf"
+        data="../pdfs/ETL_process_num1.pdf"
         type="application/pdf"
         width="100%"
         height="550">
