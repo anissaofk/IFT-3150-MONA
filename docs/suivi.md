@@ -95,10 +95,18 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 
 </div>
 
-<!-- ### Difficultés rencontrées
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
 
-> À compléter uniquement si des obstacles ont eu un impact réel
-> sur l’avancement du projet.
+## **Semaine 3 (26 janvier - 1er février)**
 
-!!! warning "Difficultés" - Problème de configuration du plugin Mermaid - Confusion entre `mkdocs-mermaid2-plugin` (pip)
-et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correcte dans `mkdocs.yml` -->
+### Objectifs de la période
+
+- Continuer la recherche sur le processus ETL et son intégration avec le projet MONA
+- Trouver des avis sur les deux outils Apache Airflow ainsi que OpenRefine
+- Planifier une rencontre avec Simon pour apprendre comment effectuer un déploiement
+
+### Travail réalisé
+
+<!-- !!! abstract "Avancement" - [x] Analyse de solutions existantes - Comparaison de trois outils similaires - [x] Prototype basse fidélité (Figma) - [ ] Validation utilisateur - Reportée à la semaine suivante -->
+
+- Participation à une réunion avec l’équipe (Weekly Meeting)
