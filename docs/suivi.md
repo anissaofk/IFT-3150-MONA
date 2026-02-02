@@ -104,9 +104,38 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 - Continuer la recherche sur le processus ETL et son intégration avec le projet MONA
 - Trouver des avis sur les deux outils Apache Airflow ainsi que OpenRefine
 - Planifier une rencontre avec Simon pour apprendre comment effectuer un déploiement
+- Générer la clé ssh publique et la transmettre à Lena pour avoir accès au serveur
 
 ### Travail réalisé
 
 <!-- !!! abstract "Avancement" - [x] Analyse de solutions existantes - Comparaison de trois outils similaires - [x] Prototype basse fidélité (Figma) - [ ] Validation utilisateur - Reportée à la semaine suivante -->
 
 - Participation à une réunion avec l’équipe (Weekly Meeting)
+
+- Génération de la clé publique SSH afin d'avoir accès au serveur :
+  <ol>
+    <li>Il faut d'abord s'assurer que OpenSSH soit installé (Windows 11) : <code>ssh -v</code></li>
+    <li>Pour générer sa clé publique il faut taper : <code>ssh-keygen -t ed25519 -C "ton_email@example.com"</code></li>
+    <li>Appuyer sur Entrée pour accepter l'emplacement par défaut</li>
+    <li>Choisir une passphrase (optionnel)</li>
+    <li>Pour récupérer la clé publique : <code>cat ~/.ssh/id_ed25519.pub</code></li>
+  </ol>
+
+- Participation à une réunion avec Simon pour me montrer comment effectuer un déploiement :
+  <ul>
+    <li>Bonne pratique : créer une branche sur GitHub pour chaque tâche</li>
+    <li>
+      Étapes du déploiement :
+      <ol>
+        <li>Dans le terminal taper : <code>ssh picasso</code></li>
+        <li>Introduire le mot de passe de la configuration</li>
+        <li>
+          Accéder au bon repo — pour l’environnement de staging :
+          <code>ls docker/dev/mona-server/</code>
+        </li>
+        <li>Effectuer un <code>git pull</code></li>
+      </ol>
+    </li>
+  </ul>
+
+- J'ai exploré cette semaine quels étaient les avantages et inconvénients de l'utilisation du processus ETL au sein du projet MONA
