@@ -121,9 +121,9 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
     <li>Pour récupérer la clé publique : <code>cat ~/.ssh/id_ed25519.pub</code></li>
   </ol>
 
-- Participation à une réunion avec Simon pour me montrer comment effectuer un déploiement :
+- Participation à une réunion avec Simon pour me montrer comment effectuer un déploiement au niveau de l'environnement de staging (dev) :
   <ul>
-    <li>Bonne pratique : créer une branche sur GitHub pour chaque tâche</li>
+    <li> *Bonne pratique* : créer une branche sur GitHub pour chaque tâche</li>
     <li>
       Étapes du déploiement :
       <ol>
@@ -138,4 +138,43 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
     </li>
   </ul>
 
-- J'ai exploré cette semaine quels étaient les avantages et inconvénients de l'utilisation du processus ETL au sein du projet MONA
+- J'ai exploré cette semaine quels étaient les avantages et inconvénients de l'utilisation du processus ETL au sein du projet MONA :
+<div style="position: relative; width: 100%; margin: 2rem auto;">
+<p style="text-align:center; font-style: italic; margin-top: -1rem;">
+  Cliquer sur le schéma pour l’ouvrir en plein écran
+</p>
+  <a href="../pdfs/etl_process_num2.pdf" target="_blank"
+     style="position:absolute; inset:0; z-index:10;">
+  </a>
+
+<object
+        data="../pdfs/etl_process_num2.pdf"
+        type="application/pdf"
+        width="100%"
+        height="550">
+</object>
+
+</div>
+
+- _Feedback lors de la réunion hebdomadaire_ : le schéma n’explique pas clairement de quelle façon les deux outils seront utilisés dans le backend pour la migration des données. Je dois donc me familiariser davantage avec le code existant et déterminer comment et où intégrer les packages du processus ETL déjà présent dans Laravel notamment ceux mentionnés dans le premier schéma, puisque l’idée d’utiliser Airflow a été écartée en raison de sa complexité
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 4 (02–08 février)**
+
+### Objectifs de la période
+
+- IMPORTANT : Comprendre et se familiariser avec le code côté serveur
+- Répondre aux questions suivantes :
+  <ol>
+
+  <li> Comment intégrer OpenRefine dans le workfow actuel ? </li>
+  <li> Est-ce que le format exporté de OpenRefine correspond à nos besoins?</li>
+
+  </ol>
+
+### Travail réalisé
+
+- Participation à une réunion avec l’équipe (Weekly Meeting)
+- Participation à une réunion avec Christian lors de laquelle il m'a donné une vue d'ensemble du développement mobile, la librairie utilisée (Vue.js), il m'a également expliqué comment on effectuait une release (sujet de notre rencontre). Dans le fond, une fois que la release pour les tests est faite, la release en production se fait facilement que ça soit sur Apple App Store (IOS) ou bien Google PLay Store (Android)
+- Familiarisation et compréhension de mona-server :
