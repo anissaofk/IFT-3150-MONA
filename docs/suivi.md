@@ -176,5 +176,5 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 ### Travail réalisé
 
 - Participation à une réunion avec l’équipe (Weekly Meeting)
-- Participation à une réunion avec Christian lors de laquelle il m'a donné une vue d'ensemble du développement mobile, la librairie utilisée (Vue.js), il m'a également expliqué comment on effectuait une release (sujet de notre rencontre). Dans le fond, une fois que la release pour les tests est faite, la release en production se fait facilement que ça soit sur Apple App Store (IOS) ou bien Google PLay Store (Android)
+- Participation à une réunion avec Christian, durant laquelle il m’a présenté une vue d’ensemble du développement mobile, la librairie utilisée (Vue.js) et le processus de release, qui était le sujet principal de notre rencontre. En résumé, une fois la release destinée aux tests effectuée, la mise en production se fait facilement, que ce soit sur l’Apple App Store (iOS) ou sur le Google Play Store (Android).
 - Familiarisation et compréhension de mona-server :
