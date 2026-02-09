@@ -610,6 +610,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Semaine 5 (09–15 février)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1095,6 +1123,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Semaine 5 (09–15 février)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -1184,7 +1240,7 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 <li>Lecture de la documentation concernant l'architecture du projet sur le Wiki.</li>
 <li>Effectuer l'installation ainsi que la configuration de l'environnement de développement</li>
 <li>Familiarisation avec la librérie Laravel</li>
-<li>Participation à une réunion avec Corélie pour qu'elle puisse m'expliquer la dernière version de l'API</li>
+<li>Participation à une réunion avec Corélie pour qu'elle puisse m'expliquer l'API <strong>v3</strong> (version la plus récente)</li>
 <li>Recherche sur le modèle ETL et comment les outils OpenRefine ainsi que Apache Airflow peuvent opérer au niveau du processus</li>
 </ul>
 <p>Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :</p>
@@ -1290,17 +1346,9 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 <p><strong>Architecture du projet</strong></p>
 <div class="highlight"><pre><span></span><code>- app/ : Contient la logique métier de l&#39;application (Modèles, Controllers, Services)
 
-   app/Console : Commandes artisan personnalisées (CLI)
-   app/Http : Gestion du web : contrôleurs, middleware, ressources API
-   app/Jobs : Définition et gestion de jobs asynchrones / background
-   app/Mail : E-mails personnalisés
-   app/Models : Modèles de données et relations (ORM)
-   app/Events, app/Listeners, app/Policies : Événements, écouteurs et politiques
-
-
 - routes/ : Définit les routes API et web
 
-- database/ : Migrations, seeders et structure de la base de données
+- database/ : Migrations de la base de données
 
 - resources/ : Vues (Blade, Vue.js) et assets (CSS, JS)
 
@@ -1314,10 +1362,56 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 
 - documentation/ : Documentation du projet
 </code></pre></div>
+<ul>
+<li><strong>Vue d'ensemble du dossier app/</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Dossier</th>
+<th>Rôle principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Console/</code></td>
+<td>Commandes Artisan et planification (schedule)</td>
+</tr>
+<tr>
+<td><code>Exceptions/</code></td>
+<td>Gestion centralisée des exceptions HTTP</td>
+</tr>
+<tr>
+<td><code>Helpers/</code></td>
+<td>Fonctions utilitaires (fichiers, photos)</td>
+</tr>
+<tr>
+<td><code>Http/</code></td>
+<td>Contrôleurs, middleware, validation, ressources API</td>
+</tr>
+<tr>
+<td><code>Jobs/</code></td>
+<td>Tâches asynchrones (imports, nettoyage, mise à jour JSON)</td>
+</tr>
+<tr>
+<td><code>Mail/</code></td>
+<td>Classes d'envoi d'e-mails (réinitialisation mot de passe)</td>
+</tr>
+<tr>
+<td><code>Models/</code></td>
+<td>Modèles Eloquent et logique métier des entités</td>
+</tr>
+<tr>
+<td><code>Providers/</code></td>
+<td>Enregistrement des services et configuration des routes/vues</td>
+</tr>
+</tbody>
+</table>
+<p><strong>NOTE</strong> : Plus de détails concernant les sous dossiers de app/ sont disponibles ici <a href="../details-app-folders/">Détails</a></p>
 <p><strong>Architecture à plusieurs niveaux</strong>
 Le projet suit une architecture multi-niveaux :</p>
 <div class="highlight"><pre><span></span><code> - Couche de présentation : Interface web (Vue.js + Blade)
- - Couche de service : API REST (Laravel)
+ - Couche de service : API REST (Laravel) — version actuelle : v3 (Hiver 2026)
  - Couche de données : Base de données MySQL
 </code></pre></div>
 <p><strong>Fichiers importants</strong></p>
@@ -1327,9 +1421,81 @@ Le projet suit une architecture multi-niveaux :</p>
   - .env.example : Variables d&#39;environnement
   - artisan : CLI Laravel pour les commandes de développement
 </code></pre></div>
+<ul>
+<li><strong>Packages ETL et import de données pour Laravel</strong></li>
+</ul>
+<p><strong>1. Packages ETL (Extract – Transform – Load)</strong></p>
+<p><strong>marquine/php-etl</strong></p>
+<ul>
+<li><strong>Packagist :</strong> <code>marquine/php-etl</code></li>
+<li>Très utilisé (132k+ installs). API fluide pour enchaîner extract → transform → load.</li>
+<li>Intégration Laravel (ServiceProvider), support SQLite, MySQL, PostgreSQL.</li>
+<li>Exemple : <code>Job::start()-&gt;extract('csv', 'file.csv')-&gt;transform('trim', ['columns' =&gt; ['name']])-&gt;load('table', 'users')</code>.</li>
+</ul>
+<p><strong>LaravelPlus/etl-manifesto</strong></p>
+<ul>
+<li><strong>GitHub :</strong> <a href="https://github.com/laravelplus/etl-manifesto">LaravelPlus/etl-manifesto</a></li>
+<li>ETL « Laravel-native » déclaratif : tout se définit en <strong>YAML</strong> (sources, transformations, destinations).</li>
+<li>Pas besoin d’écrire de requêtes ou de scripts d’export ; adapté si tu veux des pipelines déclaratifs.</li>
+</ul>
+<p><strong>2. Packages d’import (proches ETL / flux de données)</strong></p>
+<p><strong>spatie/simple-excel</strong></p>
+<ul>
+<li><strong>Packagist :</strong> <code>spatie/simple-excel</code></li>
+<li>Très répandu (millions d’installs). Lecture/écriture Excel et CSV, API simple.</li>
+<li>Utile pour l’« extract » et un peu de « transform » avant d’alimenter ta base (load fait à la main avec Eloquent/DB).</li>
+<li>Compatible Laravel 9–12, PHP 8.3+ sur les versions récentes.</li>
+</ul>
+<p><strong>laravel-enso/data-import</strong></p>
+<ul>
+<li><strong>GitHub :</strong> <a href="https://github.com/laravel-enso/data-import">laravel-enso/data-import</a></li>
+<li>Import <strong>XLSX</strong> (box/spout) avec templates, validation, notifications.</li>
+<li>Plutôt « import structuré » que ETL complet, mais couvre bien extract + transform + validation.</li>
+</ul>
+<p><strong>giftonian/massive-csv-import</strong></p>
+<ul>
+<li>Import <strong>CSV</strong> avec beaucoup de lignes, basé sur les <strong>Laravel Queues</strong>.</li>
+<li>Adapté aux gros fichiers (millions de lignes), moins « ETL générique » qu’un vrai moteur ETL.</li>
+</ul>
+<p><strong>3. Synthèse</strong></p>
+<table>
+<thead>
+<tr>
+<th>Besoin</th>
+<th>Package à regarder</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ETL complet (extract + transform + load) avec API PHP</td>
+<td><strong>marquine/php-etl</strong></td>
+</tr>
+<tr>
+<td>ETL déclaratif en YAML, intégré Laravel</td>
+<td><strong>LaravelPlus/etl-manifesto</strong></td>
+</tr>
+<tr>
+<td>Lire/écrire Excel/CSV simplement</td>
+<td><strong>spatie/simple-excel</strong></td>
+</tr>
+<tr>
+<td>Import XLSX avec validation et templates</td>
+<td><strong>laravel-enso/data-import</strong></td>
+</tr>
+<tr>
+<td>Gros CSV en file d’attente</td>
+<td><strong>massive-csv-import</strong> (ou jobs custom comme dans mona-server)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p>Dans <strong>mona-server</strong>, les imports sont faits avec des <strong>Jobs Laravel</strong> personnalisés (sans package ETL). Si on veut introduire un ETL (sources multiples, transformations réutilisables, config déclarative), <strong>php-etl</strong> ou <strong>etl-manifesto</strong> sont les plus proches ; pour seulement lire des CSV/Excel avant de les insérer en base, <strong>spatie/simple-excel</strong> suffit souvent.</p>
 <hr style="border: 0; height: 4px; background-color: #F7EFA2;">
 
 <h2 id="semaine-5-0915-fevrier"><strong>Semaine 5 (09–15 février)</strong><a class="headerlink" href="#semaine-5-0915-fevrier" title="Permanent link">&para;</a></h2>
+<h3 id="objectifs-de-la-periode_4">Objectifs de la période<a class="headerlink" href="#objectifs-de-la-periode_4" title="Permanent link">&para;</a></h3>
+<p>Continuer les tâches de la semaine précédante</p>
+<h3 id="travail-realise_4">Travail réalisé<a class="headerlink" href="#travail-realise_4" title="Permanent link">&para;</a></h3>
 
 
 

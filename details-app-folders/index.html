@@ -1,0 +1,1806 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Template de site web pour le cours IFT3150">
+      
+      
+        <meta name="author" content="Louis-Edouard Lafontant">
+      
+      
+        <link rel="canonical" href="https://ift3150-template.github.io/details-app-folders/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Details app folders - Site de suivi IFT3150</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="yellow" data-md-color-accent="yellow">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rapport-detaille-du-dossier-app-mona-server" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
+    <a href=".." title="Site de suivi IFT3150" class="md-header__button md-logo" aria-label="Site de suivi IFT3150" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Site de suivi IFT3150
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Details app folders
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="yellow" data-md-color-accent="yellow"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="yellow" data-md-color-accent="yellow"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Recherche">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Partager" aria-label="Partager" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Effacer" aria-label="Effacer" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initialisation de la recherche
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ift3150-template/ift3150-template.github.io" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ift3150-template
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Vue d'ensemble
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../suivi/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Suivi
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../resume/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Résumé
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../rapport/" class="md-tabs__link">
+          
+  
+  
+  Rapport
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Site de suivi IFT3150" class="md-nav__button md-logo" aria-label="Site de suivi IFT3150" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Site de suivi IFT3150
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ift3150-template/ift3150-template.github.io" title="Aller au dépôt" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ift3150-template
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vue d'ensemble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suivi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Suivi
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../resume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Résumé
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rapport
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rapport
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/analyse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Études préliminaires
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/conception/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Conception
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/implementation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implémentation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/evaluation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tests & Évaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/resultat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Discussion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../rapport/references/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Références
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-vue-densemble" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Vue d'ensemble
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-appconsole" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. app/Console/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. app/Console/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-consolekernelphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 Console/Kernel.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-consolecommands" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 Console/Commands/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-appexceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. app/Exceptions/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. app/Exceptions/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-handlerphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Handler.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-apphelpers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. app/Helpers/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. app/Helpers/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-filehelpersphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 FileHelpers.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-apphttp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. app/Http/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. app/Http/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-httpkernelphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 Http/Kernel.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-httpmiddleware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 Http/Middleware/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-httpcontrollers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3 Http/Controllers/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 Http/Controllers/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#controllers-admin-admin" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controllers Admin (Admin/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllers-api-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controllers API (Api/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#controllers-auth-auth" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Controllers Auth (Auth/)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-httprequests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4 Http/Requests/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#55-httpresources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.5 Http/Resources/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-appjobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. app/Jobs/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. app/Jobs/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-jobs-racine-legacy-generiques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1 Jobs racine (legacy / génériques)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-jobsapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2 Jobs/Api/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63-jobsapiv1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.3 Jobs/Api/V1/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64-jobsapiv2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.4 Jobs/Api/V2/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#65-jobsapiv3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.5 Jobs/Api/V3/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-appmail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. app/Mail/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. app/Mail/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-resetpasswordphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1 ResetPassword.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-appmodels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. app/Models/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="8. app/Models/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#81-modeles-transversaux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.1 Modèles « transversaux »
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#82-modelsadjustment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.2 Models/Adjustment/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#83-modelsartwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.3 Models/Artwork/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#84-modelsplace" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.4 Models/Place/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#85-modelsheritage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.5 Models/Heritage/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#86-modelsbadge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.6 Models/Badge/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#87-modelslocation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.7 Models/Location/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#88-modelstag" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.8 Models/Tag/
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#89-modelsphoto" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8.9 Models/Photo/
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-appproviders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. app/Providers/
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="9. app/Providers/">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#91-appserviceproviderphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.1 AppServiceProvider.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#92-authserviceproviderphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.2 AuthServiceProvider.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#93-routeserviceproviderphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.3 RouteServiceProvider.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#94-viewserviceproviderphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.4 ViewServiceProvider.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#95-broadcastserviceproviderphp-eventserviceproviderphp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9.5 BroadcastServiceProvider.php, EventServiceProvider.php
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-synthese-des-flux" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Synthèse des flux
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<style>
+    @media screen and (min-width: 76em) {
+        .md-sidebar--primary {
+            display: none !important;
+        }
+    }
+</style>
+
+<h1 id="rapport-detaille-du-dossier-app-mona-server">Rapport détaillé du dossier <code>app/</code> — mona-server<a class="headerlink" href="#rapport-detaille-du-dossier-app-mona-server" title="Permanent link">&para;</a></h1>
+<p>Description de la structure et du le rôle de chaque sous-dossier de <code>app/</code> dans mona-server.</p>
+<hr />
+<h2 id="1-vue-densemble">1. Vue d'ensemble<a class="headerlink" href="#1-vue-densemble" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Dossier</th>
+<th>Rôle principal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Console/</code></td>
+<td>Commandes Artisan et planification (schedule)</td>
+</tr>
+<tr>
+<td><code>Exceptions/</code></td>
+<td>Gestion centralisée des exceptions HTTP</td>
+</tr>
+<tr>
+<td><code>Helpers/</code></td>
+<td>Fonctions utilitaires (fichiers, photos)</td>
+</tr>
+<tr>
+<td><code>Http/</code></td>
+<td>Contrôleurs, middleware, validation, ressources API</td>
+</tr>
+<tr>
+<td><code>Jobs/</code></td>
+<td>Tâches asynchrones (imports, nettoyage, mise à jour JSON)</td>
+</tr>
+<tr>
+<td><code>Mail/</code></td>
+<td>Classes d'envoi d'e-mails (réinitialisation mot de passe)</td>
+</tr>
+<tr>
+<td><code>Models/</code></td>
+<td>Modèles Eloquent et logique métier des entités</td>
+</tr>
+<tr>
+<td><code>Providers/</code></td>
+<td>Enregistrement des services et configuration des routes/vues</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="2-appconsole">2. <code>app/Console/</code><a class="headerlink" href="#2-appconsole" title="Permanent link">&para;</a></h2>
+<h3 id="21-consolekernelphp">2.1 <code>Console/Kernel.php</code><a class="headerlink" href="#21-consolekernelphp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Définit les <strong>commandes</strong> chargées depuis <code>Commands/</code>.</li>
+<li><strong>Planification</strong> : exécution mensuelle du job <code>Api\All</code> via <code>job:dispatch "Api\All"</code> (import global des données).</li>
+</ul>
+<h3 id="22-consolecommands">2.2 <code>Console/Commands/</code><a class="headerlink" href="#22-consolecommands" title="Permanent link">&para;</a></h3>
+<p>Commandes Artisan personnalisées (invoquées par <code>php artisan &lt;signature&gt;</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Fichier</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DispatchJob.php</code></td>
+<td>Lance un job (ex. <code>php artisan job:dispatch NOM_DU_JOB</code>).</td>
+</tr>
+<tr>
+<td><code>RestoreDatabase.php</code></td>
+<td>Restauration de la base de données.</td>
+</tr>
+<tr>
+<td><code>MySqlDump.php</code></td>
+<td>Création d'un dump MySQL.</td>
+</tr>
+<tr>
+<td><code>CleansePhotos.php</code></td>
+<td>Nettoyage / déduplication des photos.</td>
+</tr>
+<tr>
+<td><code>UpdateArtworksJSON.php</code></td>
+<td>Mise à jour des fichiers JSON des œuvres.</td>
+</tr>
+<tr>
+<td><code>ImportDOIlesCommand.php</code></td>
+<td>Import des données « Îles ».</td>
+</tr>
+<tr>
+<td><code>importPlaceJsonCommand.php</code></td>
+<td>Import des lieux à partir de JSON.</td>
+</tr>
+</tbody>
+</table>
+<p><em>Note : fichiers <code>.CleansePhotos.php.swo</code> et <code>.swp</code> = artefacts éditeur (vim), à ignorer.</em></p>
+<hr />
+<h2 id="3-appexceptions">3. <code>app/Exceptions/</code><a class="headerlink" href="#3-appexceptions" title="Permanent link">&para;</a></h2>
+<h3 id="31-handlerphp">3.1 <code>Handler.php</code><a class="headerlink" href="#31-handlerphp" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Hérite de <code>Illuminate\Foundation\Exceptions\Handler</code>.</li>
+<li><strong><code>report()</code></strong> : envoi des exceptions vers les logs.</li>
+<li><strong><code>render()</code></strong> : transformation des exceptions en réponses HTTP.</li>
+<li><strong><code>$dontFlash</code></strong> : champs non renvoyés en session en cas d'erreur (ex. <code>password</code>, <code>password_confirmation</code>).</li>
+</ul>
+<p>Comportement par défaut Laravel ; pas de personnalisation forte dans ce projet.</p>
+<hr />
+<h2 id="4-apphelpers">4. <code>app/Helpers/</code><a class="headerlink" href="#4-apphelpers" title="Permanent link">&para;</a></h2>
+<h3 id="41-filehelpersphp">4.1 <code>FileHelpers.php</code><a class="headerlink" href="#41-filehelpersphp" title="Permanent link">&para;</a></h3>
+<p>Classe <strong>autoloadée</strong> via <code>composer.json</code> (<code>autoload.files</code>). Fonctions statiques utilitaires :</p>
+<table>
+<thead>
+<tr>
+<th>Méthode</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fileDiff($a, $b)</code></td>
+<td>Compare le contenu de deux fichiers (arrêt au premier octet différent).</td>
+</tr>
+<tr>
+<td><code>platformSlashes($path)</code></td>
+<td>Remplace <code>/</code> par <code>DIRECTORY_SEPARATOR</code>.</td>
+</tr>
+<tr>
+<td><code>databaseSlashes($path)</code></td>
+<td>Normalise les antislashs pour la base (slash <code>/</code>).</td>
+</tr>
+<tr>
+<td><code>isAlreadyUploaded($file, $files)</code></td>
+<td>Détecte si un fichier identique (taille + contenu) existe déjà dans la liste.</td>
+</tr>
+<tr>
+<td><code>getAllPhotosFiles()</code></td>
+<td>Liste les fichiers dans <code>storage/app/public/photos</code>.</td>
+</tr>
+<tr>
+<td><code>getAllPhotosPaths()</code></td>
+<td>Liste les chemins relatifs des photos (Storage).</td>
+</tr>
+<tr>
+<td><code>getSiblingsSameTime($path, $seconds)</code></td>
+<td>Photos modifiées dans une fenêtre de ±<code>$seconds</code> autour de <code>$path</code>.</td>
+</tr>
+<tr>
+<td><code>getSiblings($path)</code></td>
+<td>Toutes les photos sauf celle en <code>$path</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Utilisées notamment pour la déduplication et la gestion des uploads de photos.</p>
+<hr />
+<h2 id="5-apphttp">5. <code>app/Http/</code><a class="headerlink" href="#5-apphttp" title="Permanent link">&para;</a></h2>
+<p>Cœur de la couche HTTP : chaque requête passe par le <strong>Kernel</strong> (middleware), puis un <strong>Controller</strong>, avec éventuellement <strong>Requests</strong> (validation) et <strong>Resources</strong> (format de réponse).</p>
+<h3 id="51-httpkernelphp">5.1 <code>Http/Kernel.php</code><a class="headerlink" href="#51-httpkernelphp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>$middleware</code></strong> (global) : CORS, mode maintenance, TrimStrings, TrustProxies, etc.</li>
+<li><strong><code>$middlewareGroups</code></strong> :</li>
+<li><strong><code>web</code></strong> : cookies, session, CSRF, vues (routes classiques).</li>
+<li><strong><code>api</code></strong> : throttle (240 req/min), bindings, <strong><code>json</code></strong> (force <code>Accept: application/json</code>).</li>
+<li><strong><code>$routeMiddleware</code></strong> (alias) :</li>
+<li><code>auth</code>, <code>auth.basic</code>, <code>guest</code>, <code>can</code>, <code>verified</code>, <code>signed</code>, <code>throttle</code>, <code>cache.headers</code></li>
+<li><strong><code>api_version</code></strong> → <code>ApiVersion::class</code> (choix de version d'API v1/v2/v3).</li>
+<li><strong><code>json</code></strong> → <code>Jsonify::class</code>.</li>
+<li><strong><code>role</code></strong> → <code>CheckRole::class</code> (contrôle rôle admin).</li>
+</ul>
+<h3 id="52-httpmiddleware">5.2 <code>Http/Middleware/</code><a class="headerlink" href="#52-httpmiddleware" title="Permanent link">&para;</a></h3>
+<table>
+<thead>
+<tr>
+<th>Middleware</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ApiVersion.php</code></td>
+<td>Reçoit un paramètre (ex. <code>v2</code>) et définit <code>config('app.api.version')</code> pour la requête.</td>
+</tr>
+<tr>
+<td><code>Jsonify.php</code></td>
+<td>Force <code>Accept: application/json</code> sur toutes les requêtes du groupe <code>api</code>.</td>
+</tr>
+<tr>
+<td><code>Cors.php</code></td>
+<td>Gestion des en-têtes CORS.</td>
+</tr>
+<tr>
+<td><code>CheckRole.php</code></td>
+<td>Vérifie <code>$request-&gt;user()-&gt;role == $role</code> (ex. <code>role:admin</code>) ; sinon redirection <code>/home</code>.</td>
+</tr>
+<tr>
+<td><code>Authenticate.php</code></td>
+<td>Redirige les non-authentifiés (web ou API).</td>
+</tr>
+<tr>
+<td><code>EncryptCookies.php</code>, <code>VerifyCsrfToken.php</code></td>
+<td>Sécurité web (cookies, CSRF).</td>
+</tr>
+<tr>
+<td><code>TrimStrings.php</code>, <code>TrustProxies.php</code>, etc.</td>
+<td>Comportements standards Laravel.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-httpcontrollers">5.3 <code>Http/Controllers/</code><a class="headerlink" href="#53-httpcontrollers" title="Permanent link">&para;</a></h3>
+<h4 id="controllers-admin-admin">Controllers Admin (<code>Admin/</code>)<a class="headerlink" href="#controllers-admin-admin" title="Permanent link">&para;</a></h4>
+<p>Interface d'administration (routes sous <code>admin/</code>, middleware <code>auth</code> + <code>role:admin</code>).</p>
+<table>
+<thead>
+<tr>
+<th>Contrôleur</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AdminController.php</code></td>
+<td>Contrôleur générique (peu utilisé d'après la doc).</td>
+</tr>
+<tr>
+<td><code>ArtworkController.php</code></td>
+<td>CRUD / listing des œuvres.</td>
+</tr>
+<tr>
+<td><code>ArtistController.php</code></td>
+<td>Gestion des artistes.</td>
+</tr>
+<tr>
+<td><code>PlaceController.php</code></td>
+<td>Gestion des lieux.</td>
+</tr>
+<tr>
+<td><code>HeritageController.php</code></td>
+<td>Gestion du patrimoine.</td>
+</tr>
+<tr>
+<td><code>UserController.php</code></td>
+<td>Gestion des utilisateurs.</td>
+</tr>
+<tr>
+<td><code>PhotoController.php</code></td>
+<td>Gestion des photos.</td>
+</tr>
+<tr>
+<td><code>DiscoveryController.php</code></td>
+<td>Gestion des « découvertes ».</td>
+</tr>
+<tr>
+<td><code>TagPhotoController.php</code>, <code>TagDiscoveryController.php</code></td>
+<td>Association tags ↔ photos / découvertes.</td>
+</tr>
+<tr>
+<td><code>AdjustmentController.php</code></td>
+<td>Consultation des ajustements (historique des modifications).</td>
+</tr>
+<tr>
+<td><code>DeletionController.php</code></td>
+<td>Gestion des suppressions.</td>
+</tr>
+<tr>
+<td><code>ChiffresClesController.php</code></td>
+<td>Tableau de bord / chiffres clés.</td>
+</tr>
+<tr>
+<td><code>BadgeController.php</code></td>
+<td>Gestion des badges.</td>
+</tr>
+<tr>
+<td><code>MenuController.php</code></td>
+<td>Logique du menu admin.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="controllers-api-api">Controllers API (<code>Api/</code>)<a class="headerlink" href="#controllers-api-api" title="Permanent link">&para;</a></h4>
+<p>Une arborescence par <strong>version</strong> : V1, V2, V3.</p>
+<ul>
+<li><strong>V1</strong> : routes en grande partie commentées ; <code>LoadJson</code>, <code>LoginController</code>, <code>RegisterController</code>, <code>UserController</code> (notes, commentaires, photos).</li>
+<li><strong>V2</strong> : API principale en lecture + auth + profil utilisateur :</li>
+<li>Ressources : <code>Artwork</code>, <code>Artist</code>, <code>Place</code>, <code>Heritage</code>, <code>Badge</code> (index/show).</li>
+<li><code>LastUpdatedArtworks</code>, <code>LastUpdatedPlaces</code>, <code>LastUpdatedHeritages</code>.</li>
+<li>Auth : login, register, logout.</li>
+<li>Sous <code>user</code> (auth requise) : show, <code>user/artworks</code>, <code>user/places</code>, <code>user/heritages</code>, updatePassword, updateUsername, updateEmail.</li>
+<li><code>CountController</code> : techniques, materials, categories, subcategories.</li>
+<li><strong>V3</strong> : évolution de V2 avec :</li>
+<li>Même structure de ressources + <code>LODExportController</code> (export LOD).</li>
+<li>Documentation : <code>DocumentationController</code> → <code>doc/artworks</code>, <code>doc/artists</code>, etc.</li>
+<li>Réinitialisation mot de passe : <code>PasswordResetController</code> (email, reset, setNewPassword).</li>
+<li><code>UserPhotoController</code> : <code>user/photo</code> (get).</li>
+</ul>
+<h4 id="controllers-auth-auth">Controllers Auth (<code>Auth/</code>)<a class="headerlink" href="#controllers-auth-auth" title="Permanent link">&para;</a></h4>
+<p>Auth Laravel classique (web) : <code>LoginController</code>, <code>RegisterController</code>, <code>ForgotPasswordController</code>, <code>ResetPasswordController</code>, <code>VerificationController</code>.</p>
+<h3 id="54-httprequests">5.4 <code>Http/Requests/</code><a class="headerlink" href="#54-httprequests" title="Permanent link">&para;</a></h3>
+<p>Form Requests pour la <strong>validation</strong> des requêtes API (utilisateur authentifié).</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>Usage typique</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>StoreArtworkUserRequest</code>, <code>UpdateArtworkUserRequest</code>, <code>ShowAndDestroyArtworkUserRequest</code></td>
+<td>Liaison user ↔ artwork.</td>
+</tr>
+<tr>
+<td><code>StorePlaceUserRequest</code>, <code>UpdatePlaceUserRequest</code>, <code>ShowAndDestroyPlaceUserRequest</code></td>
+<td>Liaison user ↔ place.</td>
+</tr>
+<tr>
+<td><code>StoreHeritageUserRequest</code>, <code>UpdateHeritageUserRequest</code>, <code>ShowAndDestroyHeritageUserRequest</code></td>
+<td>Liaison user ↔ heritage.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="55-httpresources">5.5 <code>Http/Resources/</code><a class="headerlink" href="#55-httpresources" title="Permanent link">&para;</a></h3>
+<p>Transformateurs JSON (format de réponse API par version).</p>
+<ul>
+<li><strong><code>UserResource.php</code></strong> : commun.</li>
+<li><strong>V1</strong> : <code>ArtistResource</code>, <code>ArtworkResource</code>, <code>MultiLanguageResource</code>.</li>
+<li><strong>V2</strong> : <code>ArtistResource</code>, <code>ArtworkResource</code>, <code>BadgeResource</code>, <code>HeritageResource</code>, <code>PlaceResource</code>.</li>
+<li><strong>V3</strong> : idem V2 (même noms, éventuelles différences de champs ou de structure).</li>
+</ul>
+<p>Les contrôleurs API appellent ces resources pour renvoyer des réponses JSON homogènes.</p>
+<hr />
+<h2 id="6-appjobs">6. <code>app/Jobs/</code><a class="headerlink" href="#6-appjobs" title="Permanent link">&para;</a></h2>
+<p>Tâches asynchrones (implémentent <code>ShouldQueue</code>) : <strong>imports de données</strong>, <strong>nettoyage</strong>, <strong>mise à jour de JSON</strong>. Structure reflétant les <strong>versions d'API</strong> et les <strong>sources de données</strong>.</p>
+<h3 id="61-jobs-racine-legacy-generiques">6.1 Jobs racine (legacy / génériques)<a class="headerlink" href="#61-jobs-racine-legacy-generiques" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>GetArtworks.php</code>, <code>ImportArtwork.php</code>, <code>ImportMural.php</code>, <code>ImportCollection.php</code></li>
+<li><code>ImportPlace.php</code>, <code>ImportRimouskiArtworks.php</code></li>
+</ul>
+<h3 id="62-jobsapi">6.2 <code>Jobs/Api/</code><a class="headerlink" href="#62-jobsapi" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>All.php</code></strong> : job « global » (appelé mensuellement par le schedule).</li>
+<li><strong><code>ImportAll.php</code></strong>, <strong><code>Cleansing.php</code></strong>, <strong><code>UpdateJson.php</code></strong> : orchestration ou utilitaires.</li>
+</ul>
+<h3 id="63-jobsapiv1">6.3 <code>Jobs/Api/V1/</code><a class="headerlink" href="#63-jobsapiv1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ImportAll.php</code></li>
+<li><code>Artwork/ImportAll.php</code>, <code>ImportArtwork.php</code>, <code>ImportMural.php</code></li>
+</ul>
+<h3 id="64-jobsapiv2">6.4 <code>Jobs/Api/V2/</code><a class="headerlink" href="#64-jobsapiv2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong>Artwork</strong> : ImportAll, ImportMONA, ImportDonneesOuvertesMontreal, ImportDonneesOuvertesRimouski, ImportMuralesMontreal, ImportArtPublicMontreal, ImportStorageCollections.</li>
+<li><strong>Place</strong> : ImportAll, ImportBibliBanQ, ImportLieuxCulturels.</li>
+<li><strong>Heritage</strong> : ImportAll, ImportHeritages.</li>
+<li><strong>Badge</strong> : ImportAll, ImportBadges.</li>
+<li><strong>Location</strong> : ImportAll, ImportBoroughs, ImportTerritories.</li>
+</ul>
+<h3 id="65-jobsapiv3">6.5 <code>Jobs/Api/V3/</code><a class="headerlink" href="#65-jobsapiv3" title="Permanent link">&para;</a></h3>
+<p>Version la plus riche : <strong>Cleansing</strong> et <strong>UpdateJson</strong> par domaine.</p>
+<ul>
+<li><strong>Artwork</strong> : ImportAll, Cleansing, UpdateJson, ImportMONA, ImportDoMtl, ImportDoRim, ImportDoIles, ImportArtPubMtl, ImportArtPubLaval, ImportMU, ImportMurSubMtl, ImportDoseCult, ImportUdeM.</li>
+<li><strong>Place</strong> : ImportAll, Cleansing, UpdateJson, ImportBAnQ, ImportLieuCult, ImportEqCult, updateBibliData.</li>
+<li><strong>Heritage</strong> : ImportAll, Cleansing, UpdateJson, ImportMONA, ImportAreas, ImportRPCQ, ImportSiLoi, ImportSiMuni, ImportSiMCC, ImportSiMuni, ImportImMCC, ImportImMuni.</li>
+<li><strong>Badge</strong> : ImportAll, Cleansing, UpdateJson, ImportBadges.</li>
+</ul>
+<p>Sources couvertes : Montréal, Rimouski, Laval, BAnQ, MU, UdeM, Données ouvertes (Mtl, Rim, Îles), RPCQ, MCC, municipal, etc.</p>
+<hr />
+<h2 id="7-appmail">7. <code>app/Mail/</code><a class="headerlink" href="#7-appmail" title="Permanent link">&para;</a></h2>
+<h3 id="71-resetpasswordphp">7.1 <code>ResetPassword.php</code><a class="headerlink" href="#71-resetpasswordphp" title="Permanent link">&para;</a></h3>
+<p>Mailable pour l'e-mail de <strong>réinitialisation de mot de passe</strong> : utilise la vue <code>emails.reset</code>. Utilisé par le flux « mot de passe oublié » (web ou API selon les routes).</p>
+<hr />
+<h2 id="8-appmodels">8. <code>app/Models/</code><a class="headerlink" href="#8-appmodels" title="Permanent link">&para;</a></h2>
+<p>Modèles Eloquent : <strong>tables</strong>, <strong>relations</strong>, <strong>traits</strong>, <strong>scopes</strong>. Organisation par <strong>domaine métier</strong> en sous-dossiers.</p>
+<h3 id="81-modeles-transversaux">8.1 Modèles « transversaux »<a class="headerlink" href="#81-modeles-transversaux" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>User.php</code></strong> : utilisateur (username, email, password, role, api_token). Relations : <code>artworks</code>, <code>places</code>, <code>heritages</code> (pivot avec notes/favoris, etc.).</li>
+<li><strong><code>Version.php</code></strong> : gestion de version (données ou schéma).</li>
+<li><strong><code>CategoryHistory.php</code></strong> : historique de catégories.</li>
+<li><strong><code>HasDuplicates.php</code></strong> : trait pour modèles avec doublons (original_id, duplicates).</li>
+</ul>
+<h3 id="82-modelsadjustment">8.2 <code>Models/Adjustment/</code><a class="headerlink" href="#82-modelsadjustment" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Adjustment.php</code></strong> : table des « ajustements » (qui a modifié quoi : user_id, adjustable_id, adjustable_type, before, after). Relation <code>morphTo</code> vers le modèle modifié.</li>
+<li><strong><code>Adjustable.php</code></strong> : trait pour les modèles qui enregistrent leurs modifications (Artwork, Place, Heritage). Sur <code>updating</code>/<code>deleting</code>, enregistre un enregistrement dans <code>adjustments</code> avec diff avant/après.</li>
+</ul>
+<h3 id="83-modelsartwork">8.3 <code>Models/Artwork/</code><a class="headerlink" href="#83-modelsartwork" title="Permanent link">&para;</a></h3>
+<p>Domaine <strong>œuvres d'art</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Modèle</th>
+<th>Rôle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Artwork.php</code></td>
+<td>Œuvre : titre (fr/en), source, localisation (spatial), catégorie, collection, artistes, matériaux, techniques, dimensions, etc. Utilise <code>SpatialTrait</code>, <code>SoftDeletes</code>, <code>Adjustable</code>, <code>Taggable</code>, <code>HasDuplicates</code>.</td>
+</tr>
+<tr>
+<td><code>Artist.php</code></td>
+<td>Artiste (nom, alias, collectif).</td>
+</tr>
+<tr>
+<td><code>Category.php</code>, <code>Subcategory.php</code>, <code>CategoryHistory</code></td>
+<td>Catégories / sous-catégories.</td>
+</tr>
+<tr>
+<td><code>Collection.php</code>, <code>Owner.php</code>, <code>Producer.php</code>, <code>Funder.php</code></td>
+<td>Collection, propriétaire, producteur, financeur.</td>
+</tr>
+<tr>
+<td><code>Material.php</code>, <code>Technique.php</code>, <code>Medium.php</code>, <code>Support.php</code></td>
+<td>Matériaux, techniques, supports.</td>
+</tr>
+<tr>
+<td><code>Dimension.php</code></td>
+<td>Dimensions.</td>
+</tr>
+<tr>
+<td><code>Accessibility.php</code></td>
+<td>Accessibilité.</td>
+</tr>
+<tr>
+<td><code>ArtworkUser.php</code></td>
+<td>Pivot user ↔ artwork (notes, favoris, etc.).</td>
+</tr>
+</tbody>
+</table>
+<h3 id="84-modelsplace">8.4 <code>Models/Place/</code><a class="headerlink" href="#84-modelsplace" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Place.php</code></strong> : lieu (titre, source, location spatiale, address, description, category, borough, territory). Traits : SpatialTrait, SoftDeletes, Adjustable, Taggable, HasDuplicates.</li>
+<li><strong><code>Usage.php</code></strong> : type d'usage du lieu.</li>
+<li><strong><code>PlaceUser.php</code></strong> : pivot user ↔ place.</li>
+</ul>
+<h3 id="85-modelsheritage">8.5 <code>Models/Heritage/</code><a class="headerlink" href="#85-modelsheritage" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Heritage.php</code></strong> : élément patrimonial (titre, source, url, location, area, dates, synthesis, description, status, etc.). Mêmes traits que Place pour spatial, soft delete, adjustments, tags, duplicates.</li>
+<li><strong><code>Address.php</code></strong>, <strong><code>Subusage.php</code></strong> : adresses, sous-usages.</li>
+<li><strong><code>HeritageUser.php</code></strong> : pivot user ↔ heritage.</li>
+</ul>
+<h3 id="86-modelsbadge">8.6 <code>Models/Badge/</code><a class="headerlink" href="#86-modelsbadge" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Badge.php</code></strong> : badge (ex. « Patrimoine », « Art public »).</li>
+<li><strong><code>Badgeable.php</code></strong> : trait pour relation polymorphique (artwork, place, heritage peuvent avoir des badges).</li>
+</ul>
+<h3 id="87-modelslocation">8.7 <code>Models/Location/</code><a class="headerlink" href="#87-modelslocation" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Borough.php</code></strong> : arrondissement.</li>
+<li><strong><code>Territory.php</code></strong> : territoire (ex. Montréal, Rimouski).</li>
+</ul>
+<h3 id="88-modelstag">8.8 <code>Models/Tag/</code><a class="headerlink" href="#88-modelstag" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Tag.php</code></strong> : libellé de tag.</li>
+<li><strong><code>Taggable.php</code></strong> : trait pour modèles taggables (morphToMany).</li>
+<li><strong><code>TagArtwork.php</code>, <code>TagPlace.php</code>, <code>TagHeritage.php</code>, <code>TagPhoto.php</code></strong> : pivots ou configurations de relation.</li>
+</ul>
+<h3 id="89-modelsphoto">8.9 <code>Models/Photo/</code><a class="headerlink" href="#89-modelsphoto" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>Duplicatable.php</code></strong>, <strong><code>DuplicatePhoto.php</code></strong>, <strong><code>LostPhoto.php</code></strong> : gestion des photos et de la déduplication / perte.</li>
+</ul>
+<hr />
+<h2 id="9-appproviders">9. <code>app/Providers/</code><a class="headerlink" href="#9-appproviders" title="Permanent link">&para;</a></h2>
+<h3 id="91-appserviceproviderphp">9.1 <code>AppServiceProvider.php</code><a class="headerlink" href="#91-appserviceproviderphp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>boot()</code></strong> : <code>Schema::defaultStringLength(191)</code> ; <code>URL::forceRootUrl(config('app.url'))</code> ; définition d'une Gate <code>viewApiDocs</code> (actuellement toujours true).</li>
+</ul>
+<h3 id="92-authserviceproviderphp">9.2 <code>AuthServiceProvider.php</code><a class="headerlink" href="#92-authserviceproviderphp" title="Permanent link">&para;</a></h3>
+<p>Politiques d'autorisation (policies) si définies.</p>
+<h3 id="93-routeserviceproviderphp">9.3 <code>RouteServiceProvider.php</code><a class="headerlink" href="#93-routeserviceproviderphp" title="Permanent link">&para;</a></h3>
+<ul>
+<li><strong><code>map()</code></strong> : enregistre les routes API puis web.</li>
+<li><strong>API</strong> : pour chaque version (1, 2, 3), charge <code>routes/api/v{version}/api.php</code> avec préfixe <code>api/v{version}</code> et middlewares <code>api</code> + <code>api_version:v{version}</code>.</li>
+<li><strong>API par défaut</strong> : préfixe <code>api</code> (sans numéro) → même fichier que la version <code>config('app.api_latest', 1)</code>.</li>
+</ul>
+<h3 id="94-viewserviceproviderphp">9.4 <code>ViewServiceProvider.php</code><a class="headerlink" href="#94-viewserviceproviderphp" title="Permanent link">&para;</a></h3>
+<p>Partage de données vers les vues ; <code>boot()</code> vide dans l'état actuel.</p>
+<h3 id="95-broadcastserviceproviderphp-eventserviceproviderphp">9.5 <code>BroadcastServiceProvider.php</code>, <code>EventServiceProvider.php</code><a class="headerlink" href="#95-broadcastserviceproviderphp-eventserviceproviderphp" title="Permanent link">&para;</a></h3>
+<p>Broadcasting et événements Laravel (non détaillés ici).</p>
+<hr />
+<h2 id="10-synthese-des-flux">10. Synthèse des flux<a class="headerlink" href="#10-synthese-des-flux" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Requête API</strong> : <code>RouteServiceProvider</code> choisit le fichier de routes selon l'URL (<code>/api</code>, <code>/api/v2</code>, <code>/api/v3</code>) → <code>Kernel</code> applique <code>api</code> + <code>api_version</code> → contrôleur API (V1/V2/V3) → Model + Resource → JSON.</li>
+<li><strong>Requête Admin</strong> : <code>web.php</code> → middleware <code>auth</code> + <code>role:admin</code> → contrôleur Admin → vues Blade/Vue.</li>
+<li><strong>Données</strong> : Jobs (Artisan ou schedule) exécutent les imports V2/V3, cleansing et UpdateJson ; les modèles Artwork, Place, Heritage, Badge, etc. sont alimentés et exposés via l'API.</li>
+</ol>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Retour en haut de la page
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      &copy; 2026 <b>DIRO</b> &ndash; Template de site pour le cours IFT3150 <br>Département d'informatique et de recherche opérationnelle <br>Université de Montréal
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.instant", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.suggest", "search.share", "content.tabs.link", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
