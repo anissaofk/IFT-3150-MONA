@@ -79,20 +79,15 @@ et `mermaid2` (nom du plugin) - Résolu après nettoyage et configuration correc
 Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 
 <div style="position: relative; width: 100%; margin: 2rem auto;">
-<p style="text-align:center; font-style: italic; margin-top: -1rem;">
-  Cliquer sur le schéma pour l’ouvrir en plein écran
+<p style="text-align:center; font-style: italic; margin-top: -1rem;" onclick="window.open('../pdfs/ETL_process_num1.pdf','_blank')">
+    Cliquer ici pour ouvrir en plein écran
 </p>
-  <a href="../pdfs/ETL_process_num1.pdf" target="_blank"
-     style="position:absolute; inset:0; z-index:10;">
-  </a>
-
 <object
         data="../pdfs/ETL_process_num1.pdf"
         type="application/pdf"
         width="100%"
         height="550">
 </object>
-
 </div>
 
 <hr style="border: 0; height: 4px; background-color: #F7EFA2;">
@@ -139,20 +134,13 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
   </ul>
 
 - J'ai exploré cette semaine quels étaient les avantages et inconvénients de l'utilisation du processus ETL au sein du projet MONA :
-<div style="position: relative; width: 100%; margin: 2rem auto;">
-<p style="text-align:center; font-style: italic; margin-top: -1rem;">
-  Cliquer sur le schéma pour l’ouvrir en plein écran
-</p>
-  <a href="../pdfs/etl_process_num2.pdf" target="_blank"
-     style="position:absolute; inset:0; z-index:10;">
-  </a>
 
-<object
-        data="../pdfs/etl_process_num2.pdf"
-        type="application/pdf"
-        width="100%"
-        height="550">
-</object>
+  <div style="position: relative; width: 100%; margin: 2rem auto;">
+  <p style="text-align:center; font-style: italic; margin-top: -1rem;" onclick="window.open('../pdfs/etl_process_num2.pdf','_blank')">
+    Cliquer ici pour ouvrir en plein écran
+  </p>
+
+  <object data="../pdfs/etl_process_num2.pdf" type="application/pdf" width="100%" height="550"></object>
 
 </div>
 
@@ -178,3 +166,50 @@ Après avoir effectuer ma rechecher j'ai pu organiser mes idées comme suit :
 - Participation à une réunion avec l’équipe (Weekly Meeting)
 - Participation à une réunion avec Christian, durant laquelle il m’a présenté une vue d’ensemble du développement mobile, la librairie utilisée (Vue.js) et le processus de release, qui était le sujet principal de notre rencontre. En résumé, une fois la release destinée aux tests effectuée, la mise en production se fait facilement, que ce soit sur l’Apple App Store (iOS) ou sur le Google Play Store (Android).
 - Familiarisation et compréhension de mona-server :
+
+**Architecture du projet**
+
+    - app/ : Contient la logique métier de l'application (Modèles, Controllers, Services)
+
+       app/Console : Commandes artisan personnalisées (CLI)
+       app/Http : Gestion du web : contrôleurs, middleware, ressources API
+       app/Jobs : Définition et gestion de jobs asynchrones / background
+       app/Mail : E-mails personnalisés
+       app/Models : Modèles de données et relations (ORM)
+       app/Events, app/Listeners, app/Policies : Événements, écouteurs et politiques
+
+
+    - routes/ : Définit les routes API et web
+
+    - database/ : Migrations, seeders et structure de la base de données
+
+    - resources/ : Vues (Blade, Vue.js) et assets (CSS, JS)
+
+    - public/ : Point d'entrée web de l'application (fichiers publics)
+
+    - config/ : Fichiers de configuration Laravel
+
+    - storage/ : Fichiers générés : logs, cache, uploads
+
+    - tests/ : Tests unitaires et fonctionnels
+
+    - documentation/ : Documentation du projet
+
+**Architecture à plusieurs niveaux**
+Le projet suit une architecture multi-niveaux :
+
+     - Couche de présentation : Interface web (Vue.js + Blade)
+     - Couche de service : API REST (Laravel)
+     - Couche de données : Base de données MySQL
+
+**Fichiers importants**
+
+      - composer.json : Dépendances PHP
+      - package.json : Dépendances JavaScript
+      - docker-compose.yml : Configuration Docker
+      - .env.example : Variables d'environnement
+      - artisan : CLI Laravel pour les commandes de développement
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 5 (09–15 février)**

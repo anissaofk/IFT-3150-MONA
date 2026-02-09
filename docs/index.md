@@ -113,6 +113,6 @@ Le suivi complet est disponible dans la page [Suivi de projet](suivi.md).
 | Activités                      | Début   | Fin     | Livrable               | Statut      |
 | ------------------------------ | ------- | ------- | ---------------------- | ----------- |
 | Réunion d'intégration          | 12 jan. | 12 jan. | Notes de compréhention | ✅ Terminé  |
-| Analyse / Études préliminaires | 12 jan. | 23 jan. | Document d'analyse     | 🔄 En cours |
+| Analyse / Études préliminaires | 12 jan. | 23 jan. | Document d'analyse     | ✅ Terminé  |
 | Développement / Contribution   | 23 jan. | 17 jan. | Modules / Ajouts       | 🔄 En cours |
 | Présentation + Rapport         | 17 avr. | 30 avr. | Présentation + Rapport | ⏳ À venir  |
