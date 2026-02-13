@@ -214,7 +214,7 @@ Le projet suit une architecture multi-niveaux :
       - composer.json : Dépendances PHP
       - package.json : Dépendances JavaScript
       - docker-compose.yml : Configuration Docker
-      - .env.example : Variables d'environnement
+      - .env : Variables d'environnement
       - artisan : CLI Laravel pour les commandes de développement
 
 - **Packages ETL et import de données pour Laravel**
@@ -274,6 +274,25 @@ Dans **mona-server**, les imports sont faits avec des **Jobs Laravel** personnal
 
 ### Objectifs de la période
 
-Continuer les tâches de la semaine précédante
+Continuer les tâches de la semaine précédante.
 
 ### Travail réalisé
+
+- J'ai eu une réunion avec Simon durant laquelle il m'a expliqué comment les migrations fonctionnaient et comment notre base de données est peuplée. En explorant les dossiers du **mona-server** je ne comprenais pas trop pourquoi dans le dossier **database** on avait seulement 3 fichiers de migrations et surtout comment nos données sont importer dans notre base de données. Simon m'a expliqué qu'il devrait y avoir un dossier migrations sur Github non disponible pour l'instant (qu'il va le push bientôt) et qui donc contient tout les fichiers nécessaires pour la création/modification de nos tables. Pour ce qui est de l'importation des données, pour remplir nos tables pour la 1ère fois après que le serveur soit actif en local :
+
+       - on lance le serveur dans le fond :  `./vendor/laravel/sail/bin/sail up -d`
+       - on utilise ces commandes : `./vendor/laravel/sail/bin/sail artisan migrate` ensuite `./vendor/laravel/sail/bin/sail mysql < 01-07-2024.sql`
+
+- J'ai également installé dbeaver (n'importe quel autre logiciel fera l'affaire) pour mieux visualiser nos données car je trouvais que c'était un peu compliqué depuis le terminal. Les identifiants pour se connecter à la base de données se trouvent dans le fichier **.env** . Une fois ceci est fait on devrait voir ceci :
+
+  ![dbeaver View](assets/dbeaver-view.png){style="display:block; margin: 0 auto; width:85%; height:100%;"}
+
+- Une des questions posée à Simon était pourquoi ma page une fois que je lance le serveur ne charge pas le styling, et on s'est donc rendu compte que y'avait un bug quelque part.
+  ![dbeaver View](assets/home-view-nonFixed.png){style="display:block; margin: 0 auto; width:85%; height:100%;"}
+
+Simon m'a alors fait part de ces deux fichiers : **.env** et **docker-compose.yml**
+En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai donc fait mes recherches et j'ai trouvé que le problème était bel et bien dans le fichier des variables d'environements **.env** :
+
+Changer le APP_URL de : `APP_URL=http://localhost` à `APP_URL=http://localhost:8080`
+
+Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est `Mona-Logo.svg` alors que dans le projet c'est `logo.svg`. J’ai donc simplement changé le nom de l’image au lieu de le modifier partout dans le code.
