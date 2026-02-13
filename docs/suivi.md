@@ -274,7 +274,7 @@ Dans **mona-server**, les imports sont faits avec des **Jobs Laravel** personnal
 
 ### Objectifs de la période
 
-Continuer les tâches de la semaine précédante.
+- Continuer les tâches de la semaine précédante.
 
 ### Travail réalisé
 
@@ -296,3 +296,12 @@ En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai d
 Changer le APP_URL de : `APP_URL=http://localhost` à `APP_URL=http://localhost:8080`
 
 Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est `Mona-Logo.svg` alors que dans le projet c'est `logo.svg`. J’ai donc simplement changé le nom de l’image au lieu de le modifier partout dans le code.
+
+- J'ai lu le mémoire de Simon, et voici ce que je retiens :
+- Retour sur les deux questions :
+  <ol>
+
+  <li> Comment intégrer OpenRefine dans le workfow actuel ? </li>
+  <li> Est-ce que le format exporté de OpenRefine correspond à nos besoins?</li>
+
+  </ol>

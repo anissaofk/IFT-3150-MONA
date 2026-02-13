@@ -38,56 +38,84 @@ Le projet s’inscrit dans le contexte de la valorisation du patrimoine culturel
 <!-- > Décrivez le problème central ou la question de recherche que votre projet cherche à adresser, pourquoi s'y intéresser et les faiblesses des solutions actuelles.
 > Le problème doit pouvoir être compris indépendamment de la solution envisagée. -->
 
-L’accès et la découverte de l’art public et du patrimoine culturel sont souvent limités par des barrières sociales, éducatives et technologiques. Malgré l’abondance d’œuvres et de lieux culturels à Montréal, plusieurs citoyen·ne·s n’ont pas les outils ou les opportunités d’explorer ces richesses de manière engageante. Il existe un manque de médiation interactive et de sensibilisation inclusive qui combine culture, technologie et engagement communautaire.
+MONA maintient une base de données fédérée alimentée par plusieurs sources externes (données gouvernementales, fichiers CSV, Wikidata, etc.). Ces sources évoluent dans le temps, ce qui oblige MONA à réimporter régulièrement l’ensemble des données afin de refléter les mises à jour. Cependant, la réimportation complète des données pose un problème majeur :
+
+- Les corrections humaines (alignements, réconciliations, fusions, corrections éditoriales) que les historiennes ont ressorties et qui ont donc été appliquées vont être écrasées.
+
+- Les modifications qui sont effectuées via l’API v4 (UPDATE, CREATE, DELETE) vont apparaître immédiatement au niveau de la base de données mais ne sont pas systématiquement enregistrées comme règles persistantes de corrections donc encore une fois les données corrigées vont être écrasées.
+
+- Il existe donc une dissociation entre les corrections SQL historiques et les modifications faites via l’API.
+
+Le défi principal est donc de lier les corrections et modifications faites au niveau de l'API avec ceux du processus d'importation et donc avoir un système cohérent où toutes les corrections, sont persistées et automatiquement rejouées lors des imports.
 
 ### Proposition et objectifs
 
 <!-- > Présentez votre proposition de projet et les objectifs visés. Expliquez en quoi votre approche répond à la problématique identifiée.
 > Assurez-vous d'avoir, dans la mesure du possible, des objectifs mesurables, raisonnnables dans le temps et non redondants entre eux. -->
 
-L’objectif du projet est de développer et promouvoir une plateforme culturelle numérique et participative (basée sur l’application MONA) ainsi que des parcours de médiation culturelle qui:
+L’objectif du projet est de renforcer l’architecture technique de MONA en assurant la cohérence entre :
 
-- Encourage la découverte et l’appréciation de l’art public et du patrimoine.
+- Le système d’importation
 
-- Favorise l’inclusion, l’accessibilité et le dialogue culturel au sein de la population montréalaise.
+- Le système de corrections persistantes
 
-- Offre des activités éducatives et interactives adaptées à différents publics (grand public, étudiant·e·s, institutions culturelles).
+- L’API
 
-- Mesure l’engagement des utilisateur·rice·s (participation aux parcours, utilisation de l’application, retours qualitatifs).
+Les objectifs spécifiques sont :
+
+- Concevoir un mécanisme permettant d’enregistrer les corrections effectuées via l’API v4 dans le système officiel de corrections.
+
+- Unifier les différents canaux de correction (SQL, API) en une seule couche persistante.
+
+- Garantir que les réimportations complètes des sources n’écrasent pas les corrections validées.
+
+- Mettre en place un pipeline reproductible et traçable.
+
+- Améliorer la maintenabilité et la robustesse de l’architecture des données.
 
 ### Méthodologie
 
 <!-- > Expliquez comment vous comptez aborder le projet : démarche générale, grandes étapes prévues, itérations, types de validations envisagées. -->
 
-La méthodologie adoptée repose sur une approche d’observation, d’analyse et de contribution à un projet existant.
+La méthodologie adoptée repose sur une approche d’analyse technique et d’amélioration architecturale d’un système existant.
 
 Les principales étapes sont :
 
-- Prise de connaissance du projet MONA : Analyse de la mission, des valeurs, des services offerts et du fonctionnement général de l’organisme et de l’application.
+- Analyse du fonctionnement actuel du pipeline d’importation (ETL) et du système de corrections SQL.
 
-- Analyse des dispositifs existants : Étude des parcours de médiation culturelle, des activités proposées et des outils numériques utilisés pour engager le public.
+- Étude des nouvelles fonctionnalités CRUD/REST de l’API v4.
 
-- Observation des usages et des publics ciblés : Compréhension des types d’utilisateurs, des contextes d’utilisation et des objectifs pédagogiques et culturels visés.
+- Identification des incohérences entre modifications API et corrections persistantes.
 
-- Analyse critique : Identification des forces, limites et enjeux du projet (accessibilité, clarté, engagement, inclusion).
+- Conception d’un mécanisme unifié où toute modification sur des données fédérées devient une règle persistante.
 
-- Propositions d’amélioration ou pistes de réflexion : Formulation de recommandations ou suggestions réalistes, en cohérence avec la vision et les contraintes du projet existant.
+- Implémentation d’un lien entre les opérations UPDATE de l’API et le système de corrections.
 
-Cette démarche permet de s’inscrire dans une logique de collaboration et d’apprentissage, plutôt que de conception.
+- Validation du fonctionnement lors d’un cycle complet de réimportation.
+
+Cette démarche vise à assurer la cohérence des données dans un contexte de fédération multi-sources, tout en minimisant le travail répétitif des expertes humaines.
 
 ### Validation et Évaluation
 
 <!-- > Indiquez comment vous évaluerez que votre solution répond aux objectifs du projet (ex. scénarios d’usage, tests, retours utilisateurs, indicateurs qualitatifs ou quantitatifs). -->
 
-L’évaluation du travail reposera principalement sur :
+L’évaluation du travail reposera sur des critères techniques et fonctionnels permettant de vérifier que l’architecture proposée répond efficacement aux enjeux de pérennité et de cohérence des données.
 
-- La cohérence de l’analyse du projet existant.
+Les principaux éléments de validation seront :
 
-- La pertinence des observations et réflexions critiques formulées.
+- **Reproductibilité des données**: Vérifier qu’après une réimportation complète des sources, les corrections enregistrées (via SQL ou via API v4) sont correctement réappliquées.
 
-- La qualité des liens établis entre théorie, pratiques observées et objectifs du projet MONA.
+- **Intégration API ↔ Système de corrections**: Tester que toute modification effectuée via les opérations CRUD de l’API v4 (notamment UPDATE) génère automatiquement une règle persistante intégrée au pipeline ETL.
 
-- La capacité à proposer des améliorations réalistes et justifiées, même à un niveau conceptuel.
+- **Non-régression des données** : S’assurer qu’aucune correction validée ne soit perdue lors des cycles successifs d’importation.
+
+- **Cohérence des fusions et relations** : Vérifier que les opérations de fusion (merge) conservent l’intégrité des relations (pivots, clés étrangères).
+
+- **Traçabilité des transformations** : Confirmer que les corrections sont documentées, identifiables et rejouables dans un contexte de nouvelle installation.
+
+- **Tests techniques** : Validation par des scénarios concrets : Fusion d’entités → Réimport → Vérification
+
+Cette approche permet d’évaluer non seulement le bon fonctionnement technique du système, mais également sa robustesse face aux mises à jour successives des sources externes.
 
 ## Équipe
 
