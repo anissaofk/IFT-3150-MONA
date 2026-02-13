@@ -1418,7 +1418,7 @@ Le projet suit une architecture multi-niveaux :</p>
 <div class="highlight"><pre><span></span><code>  - composer.json : Dépendances PHP
   - package.json : Dépendances JavaScript
   - docker-compose.yml : Configuration Docker
-  - .env.example : Variables d&#39;environnement
+  - .env : Variables d&#39;environnement
   - artisan : CLI Laravel pour les commandes de développement
 </code></pre></div>
 <ul>
@@ -1494,8 +1494,29 @@ Le projet suit une architecture multi-niveaux :</p>
 
 <h2 id="semaine-5-0915-fevrier"><strong>Semaine 5 (09–15 février)</strong><a class="headerlink" href="#semaine-5-0915-fevrier" title="Permanent link">&para;</a></h2>
 <h3 id="objectifs-de-la-periode_4">Objectifs de la période<a class="headerlink" href="#objectifs-de-la-periode_4" title="Permanent link">&para;</a></h3>
-<p>Continuer les tâches de la semaine précédante</p>
+<p>Continuer les tâches de la semaine précédante.</p>
 <h3 id="travail-realise_4">Travail réalisé<a class="headerlink" href="#travail-realise_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>J'ai eu une réunion avec Simon durant laquelle il m'a expliqué comment les migrations fonctionnaient et comment notre base de données est peuplée. En explorant les dossiers du <strong>mona-server</strong> je ne comprenais pas trop pourquoi dans le dossier <strong>database</strong> on avait seulement 3 fichiers de migrations et surtout comment nos données sont importer dans notre base de données. Simon m'a expliqué qu'il devrait y avoir un dossier migrations sur Github non disponible pour l'instant (qu'il va le push bientôt) et qui donc contient tout les fichiers nécessaires pour la création/modification de nos tables. Pour ce qui est de l'importation des données, pour remplir nos tables pour la 1ère fois après que le serveur soit actif en local :</p>
+<ul>
+<li>on lance le serveur dans le fond :  <code>./vendor/laravel/sail/bin/sail up -d</code></li>
+<li>on utilise ces commandes : <code>./vendor/laravel/sail/bin/sail artisan migrate</code> ensuite <code>./vendor/laravel/sail/bin/sail mysql &lt; 01-07-2024.sql</code></li>
+</ul>
+</li>
+<li>
+<p>J'ai également installé dbeaver (n'importe quel autre logiciel fera l'affaire) pour mieux visualiser nos données car je trouvais que c'était un peu compliqué depuis le terminal. Les identifiants pour se connecter à la base de données se trouvent dans le fichier <strong>.env</strong> . Une fois ceci est fait on devrait voir ceci :</p>
+</li>
+</ul>
+<p><img alt="dbeaver View" src="../assets/dbeaver-view.png" style="display:block; margin: 0 auto; width:85%; height:100%;" /></p>
+<ul>
+<li>Une des questions posée à Simon était pourquoi ma page une fois que je lance le serveur ne charge pas le styling, et on s'est donc rendu compte que y'avait un bug quelque part.
+  <img alt="dbeaver View" src="../assets/home-view-nonFixed.png" style="display:block; margin: 0 auto; width:85%; height:100%;" /></li>
+</ul>
+<p>Simon m'a alors fait part de ces deux fichiers : <strong>.env</strong> et <strong>docker-compose.yml</strong>
+En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai donc fait mes recherches et j'ai trouvé que le problème était bel et bien dans le fichier des variables d'environements <strong>.env</strong> :</p>
+<p>Changer le APP_URL de : <code>APP_URL=http://localhost</code> à <code>APP_URL=http://localhost:8080</code></p>
+<p>Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est <code>Mona-Logo.svg</code> alors que dans le projet c'est <code>logo.svg</code>. J’ai donc simplement changé le nom de l’image au lieu de le modifier partout dans le code.</p>
 
 
 
