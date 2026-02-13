@@ -999,67 +999,105 @@
 <!-- > Décrivez le problème central ou la question de recherche que votre projet cherche à adresser, pourquoi s'y intéresser et les faiblesses des solutions actuelles.
 > Le problème doit pouvoir être compris indépendamment de la solution envisagée. -->
 
-<p>L’accès et la découverte de l’art public et du patrimoine culturel sont souvent limités par des barrières sociales, éducatives et technologiques. Malgré l’abondance d’œuvres et de lieux culturels à Montréal, plusieurs citoyen·ne·s n’ont pas les outils ou les opportunités d’explorer ces richesses de manière engageante. Il existe un manque de médiation interactive et de sensibilisation inclusive qui combine culture, technologie et engagement communautaire.</p>
+<p>MONA maintient une base de données fédérée alimentée par plusieurs sources externes (données gouvernementales, fichiers CSV, Wikidata, etc.). Ces sources évoluent dans le temps, ce qui oblige MONA à réimporter régulièrement l’ensemble des données afin de refléter les mises à jour. Cependant, la réimportation complète des données pose un problème majeur :</p>
+<ul>
+<li>
+<p>Les corrections humaines (alignements, réconciliations, fusions, corrections éditoriales) que les historiennes ont ressorties et qui ont donc été appliquées vont être écrasées.</p>
+</li>
+<li>
+<p>Les modifications qui sont effectuées via l’API v4 (UPDATE, CREATE, DELETE) vont apparaître immédiatement au niveau de la base de données mais ne sont pas systématiquement enregistrées comme règles persistantes de corrections donc encore une fois les données corrigées vont être écrasées.</p>
+</li>
+<li>
+<p>Il existe donc une dissociation entre les corrections SQL historiques et les modifications faites via l’API.</p>
+</li>
+</ul>
+<p>Le défi principal est donc de lier les corrections et modifications faites au niveau de l'API avec ceux du processus d'importation et donc avoir un système cohérent où toutes les corrections, sont persistées et automatiquement rejouées lors des imports.</p>
 <h3 id="proposition-et-objectifs">Proposition et objectifs<a class="headerlink" href="#proposition-et-objectifs" title="Permanent link">&para;</a></h3>
 <!-- > Présentez votre proposition de projet et les objectifs visés. Expliquez en quoi votre approche répond à la problématique identifiée.
 > Assurez-vous d'avoir, dans la mesure du possible, des objectifs mesurables, raisonnnables dans le temps et non redondants entre eux. -->
 
-<p>L’objectif du projet est de développer et promouvoir une plateforme culturelle numérique et participative (basée sur l’application MONA) ainsi que des parcours de médiation culturelle qui:</p>
+<p>L’objectif du projet est de renforcer l’architecture technique de MONA en assurant la cohérence entre :</p>
 <ul>
 <li>
-<p>Encourage la découverte et l’appréciation de l’art public et du patrimoine.</p>
+<p>Le système d’importation</p>
 </li>
 <li>
-<p>Favorise l’inclusion, l’accessibilité et le dialogue culturel au sein de la population montréalaise.</p>
+<p>Le système de corrections persistantes</p>
 </li>
 <li>
-<p>Offre des activités éducatives et interactives adaptées à différents publics (grand public, étudiant·e·s, institutions culturelles).</p>
+<p>L’API</p>
+</li>
+</ul>
+<p>Les objectifs spécifiques sont :</p>
+<ul>
+<li>
+<p>Concevoir un mécanisme permettant d’enregistrer les corrections effectuées via l’API v4 dans le système officiel de corrections.</p>
 </li>
 <li>
-<p>Mesure l’engagement des utilisateur·rice·s (participation aux parcours, utilisation de l’application, retours qualitatifs).</p>
+<p>Unifier les différents canaux de correction (SQL, API) en une seule couche persistante.</p>
+</li>
+<li>
+<p>Garantir que les réimportations complètes des sources n’écrasent pas les corrections validées.</p>
+</li>
+<li>
+<p>Mettre en place un pipeline reproductible et traçable.</p>
+</li>
+<li>
+<p>Améliorer la maintenabilité et la robustesse de l’architecture des données.</p>
 </li>
 </ul>
 <h3 id="methodologie">Méthodologie<a class="headerlink" href="#methodologie" title="Permanent link">&para;</a></h3>
 <!-- > Expliquez comment vous comptez aborder le projet : démarche générale, grandes étapes prévues, itérations, types de validations envisagées. -->
 
-<p>La méthodologie adoptée repose sur une approche d’observation, d’analyse et de contribution à un projet existant.</p>
+<p>La méthodologie adoptée repose sur une approche d’analyse technique et d’amélioration architecturale d’un système existant.</p>
 <p>Les principales étapes sont :</p>
 <ul>
 <li>
-<p>Prise de connaissance du projet MONA : Analyse de la mission, des valeurs, des services offerts et du fonctionnement général de l’organisme et de l’application.</p>
+<p>Analyse du fonctionnement actuel du pipeline d’importation (ETL) et du système de corrections SQL.</p>
 </li>
 <li>
-<p>Analyse des dispositifs existants : Étude des parcours de médiation culturelle, des activités proposées et des outils numériques utilisés pour engager le public.</p>
+<p>Étude des nouvelles fonctionnalités CRUD/REST de l’API v4.</p>
 </li>
 <li>
-<p>Observation des usages et des publics ciblés : Compréhension des types d’utilisateurs, des contextes d’utilisation et des objectifs pédagogiques et culturels visés.</p>
+<p>Identification des incohérences entre modifications API et corrections persistantes.</p>
 </li>
 <li>
-<p>Analyse critique : Identification des forces, limites et enjeux du projet (accessibilité, clarté, engagement, inclusion).</p>
+<p>Conception d’un mécanisme unifié où toute modification sur des données fédérées devient une règle persistante.</p>
 </li>
 <li>
-<p>Propositions d’amélioration ou pistes de réflexion : Formulation de recommandations ou suggestions réalistes, en cohérence avec la vision et les contraintes du projet existant.</p>
+<p>Implémentation d’un lien entre les opérations UPDATE de l’API et le système de corrections.</p>
+</li>
+<li>
+<p>Validation du fonctionnement lors d’un cycle complet de réimportation.</p>
 </li>
 </ul>
-<p>Cette démarche permet de s’inscrire dans une logique de collaboration et d’apprentissage, plutôt que de conception.</p>
+<p>Cette démarche vise à assurer la cohérence des données dans un contexte de fédération multi-sources, tout en minimisant le travail répétitif des expertes humaines.</p>
 <h3 id="validation-et-evaluation">Validation et Évaluation<a class="headerlink" href="#validation-et-evaluation" title="Permanent link">&para;</a></h3>
 <!-- > Indiquez comment vous évaluerez que votre solution répond aux objectifs du projet (ex. scénarios d’usage, tests, retours utilisateurs, indicateurs qualitatifs ou quantitatifs). -->
 
-<p>L’évaluation du travail reposera principalement sur :</p>
+<p>L’évaluation du travail reposera sur des critères techniques et fonctionnels permettant de vérifier que l’architecture proposée répond efficacement aux enjeux de pérennité et de cohérence des données.</p>
+<p>Les principaux éléments de validation seront :</p>
 <ul>
 <li>
-<p>La cohérence de l’analyse du projet existant.</p>
+<p><strong>Reproductibilité des données</strong>: Vérifier qu’après une réimportation complète des sources, les corrections enregistrées (via SQL ou via API v4) sont correctement réappliquées.</p>
 </li>
 <li>
-<p>La pertinence des observations et réflexions critiques formulées.</p>
+<p><strong>Intégration API ↔ Système de corrections</strong>: Tester que toute modification effectuée via les opérations CRUD de l’API v4 (notamment UPDATE) génère automatiquement une règle persistante intégrée au pipeline ETL.</p>
 </li>
 <li>
-<p>La qualité des liens établis entre théorie, pratiques observées et objectifs du projet MONA.</p>
+<p><strong>Non-régression des données</strong> : S’assurer qu’aucune correction validée ne soit perdue lors des cycles successifs d’importation.</p>
 </li>
 <li>
-<p>La capacité à proposer des améliorations réalistes et justifiées, même à un niveau conceptuel.</p>
+<p><strong>Cohérence des fusions et relations</strong> : Vérifier que les opérations de fusion (merge) conservent l’intégrité des relations (pivots, clés étrangères).</p>
+</li>
+<li>
+<p><strong>Traçabilité des transformations</strong> : Confirmer que les corrections sont documentées, identifiables et rejouables dans un contexte de nouvelle installation.</p>
+</li>
+<li>
+<p><strong>Tests techniques</strong> : Validation par des scénarios concrets : Fusion d’entités → Réimport → Vérification</p>
 </li>
 </ul>
+<p>Cette approche permet d’évaluer non seulement le bon fonctionnement technique du système, mais également sa robustesse face aux mises à jour successives des sources externes.</p>
 <h2 id="equipe">Équipe<a class="headerlink" href="#equipe" title="Permanent link">&para;</a></h2>
 <!-- > Présentez les membres de l’équipe et le rôle principal de chacun dans le projet. -->
 
