@@ -305,3 +305,25 @@ Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est
   <li> Est-ce que le format exporté de OpenRefine correspond à nos besoins?</li>
 
   </ol>
+
+  Y'a plusieurs versions exportées par OpenRefine notamment les fichiers CSV, ou des SQL Exporter ce qui correspond à aux formats utilisés dans MOna-server, sauf que je ne pense pas qu'il nous serait d'une grande utilité vu que les corrections que l'on veut apporter au niveau de nos données, on les a à présent sous forme SQL. Conclusion, à mon avis, à part pour détecter les doublons ce logiciel ne nous servira pas à grand chose.
+
+## **Semaine 6 (16–22 février)**
+
+### Objectifs de la période
+
+- Avoir une réunion avec Simon pour qu'il me partage le fichier de patch de corrections SQL.
+
+### Travail réalisé
+
+- Cette semaine je devais avoir une réunion avec Simon pour voir à quoi ressemble le patch de corrections ainsi que pour m'expliquer comment le tout fonctionne mais il ne se sentait pas bien donc il ne pouvait pas se connecter et m'envoyer le fichier, par conséquent la réunion n'a pas eu lieu. En plus, j'avais mes examens intra cette semaine aussi alors je n'ai pas pu avancé sur le projet.
+
+## **Semaine 5 (23 février - 1er mars)**
+
+### Objectifs de la période
+
+- Comprendre le patch de corrections
+
+### Travail réalisé
+
+- Une fois que Simon m'a envoyé le fichier de corrections SQL, j'ai pu voir à quoi ça ressamblait. Voici ce que je retiens :
