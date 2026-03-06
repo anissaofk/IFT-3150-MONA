@@ -308,6 +308,8 @@ Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est
 
   Y'a plusieurs versions exportées par OpenRefine notamment les fichiers CSV, ou des SQL Exporter ce qui correspond à aux formats utilisés dans MOna-server, sauf que je ne pense pas qu'il nous serait d'une grande utilité vu que les corrections que l'on veut apporter au niveau de nos données, on les a à présent sous forme SQL. Conclusion, à mon avis, à part pour détecter les doublons ce logiciel ne nous servira pas à grand chose.
 
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
 ## **Semaine 6 (16–22 février)**
 
 ### Objectifs de la période
@@ -318,7 +320,9 @@ Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est
 
 - Cette semaine je devais avoir une réunion avec Simon pour voir à quoi ressemble le patch de corrections ainsi que pour m'expliquer comment le tout fonctionne mais il ne se sentait pas bien donc il ne pouvait pas se connecter et m'envoyer le fichier, par conséquent la réunion n'a pas eu lieu. En plus, j'avais mes examens intra cette semaine aussi alors je n'ai pas pu avancé sur le projet.
 
-## **Semaine 5 (23 février - 1er mars)**
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 7 (23 février - 1er mars)**
 
 ### Objectifs de la période
 
@@ -327,3 +331,100 @@ Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est
 ### Travail réalisé
 
 - Une fois que Simon m'a envoyé le fichier de corrections SQL, j'ai pu voir à quoi ça ressamblait. Voici ce que je retiens :
+
+      *Contexte*
+
+      Le document « Exemple d’un fichier de corrections » décrit le fonctionnement du pipeline ETL utilisé dans le projet MONA pour intégrer des données provenant de différentes sources culturelles (par exemple UdeM) dans la base de données finale. Le pipeline suit la structure classique **EXTRACT – TRANSFORM – LOAD (ETL)**.
+
+      Dans un premier temps, les données sources sont importées dans des **tables temporaires**. Ensuite, des **fichiers SQL de corrections** sont appliqués afin d’aligner les données avec le schéma de la base MONA. Finalement, certaines colonnes sont copiées vers la base de données finale.
+
+      ---
+
+      *Extraction des données (EXTRACT)*
+
+      Chaque source de données est décrite dans un fichier de configuration contenant plusieurs propriétés :
+
+      * le nom de la source
+      * le type de fichier (CSV, JSON, etc.)
+      * l’emplacement du fichier (URL ou chemin local)
+      * le schéma de la table temporaire
+
+      Ce schéma permet de créer automatiquement une table temporaire dans laquelle les données brutes sont importées.
+
+      ---
+
+      *Transformation des données (TRANSFORM)*
+
+      Les fichiers de corrections constituent l’étape principale du traitement. Chaque fichier est divisé en trois sections :
+
+      1. **Alignement des schémas**
+      2. **Réconciliation des données**
+      3. **Corrections ciblées**
+
+      *Alignement des schémas* :
+
+      Cette étape vise à faire correspondre les colonnes des sources avec la structure de la base de données MONA. Plusieurs transformations peuvent être appliquées :
+
+      * ajout de colonnes pour indiquer la provenance des données (ex. `source`, `source_id`)
+      * conversion de formats de données (par exemple transformer une date texte en format SQL)
+      * normalisation de certaines valeurs (ex. dimensions)
+      * transformation des coordonnées géographiques en objets spatiaux
+      * création d’un nom d’artiste à partir du prénom et du nom
+
+      Ces transformations permettent d’obtenir une structure compatible avec la base de données cible.
+
+      *Réconciliation des données* :
+
+      Une fois les colonnes alignées, il est nécessaire de faire correspondre les **lignes** avec les identifiants internes de la base MONA. Cette étape consiste à attribuer des identifiants tels que :
+
+      * l’ID MONA de l’œuvre
+      * l’ID MONA de l’artiste
+      * éventuellement un identifiant externe (ex. Wikidata)
+
+      Cela permet d’éviter les doublons lorsque plusieurs sources décrivent la même œuvre.
+
+      *Corrections ciblées* :
+
+      Cette dernière section permet d’appliquer des corrections spécifiques identifiées par les expertes du domaine (historiennes de l’art). Par exemple, certaines catégories ou informations peuvent être corrigées manuellement pour des œuvres particulières.
+
+      ---
+
+
+
+      *Conclusion*
+
+      Le fichier de corrections joue un rôle central dans l’intégration des données au sein du pipeline ETL du projet MONA. Il permet de transformer les données brutes provenant de diverses sources afin de les rendre compatibles avec le schéma de la base de données finale. Bien que cette approche soit efficace pour gérer des sources hétérogènes, elle repose fortement sur des transformations manuelles en SQL, ce qui peut poser des défis en termes de maintenance et d’évolutivité.
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 8 ( 02 - 08 mars)**
+
+### Objectifs de la période
+
+- Apprendre à utiliser Curl et Postman
+- Comprendre + apprendre à utiliser l'API
+- Explorer l'interface admin
+- Executer des requêtes HTTP pour
+
+### Travail réalisé
+
+- **Utilisation de Postman et Curl**
+
+Postman et Curl permettent d’envoyer des requêtes HTTP vers une API et d’observer les réponses retournées par le serveur. Cela permet notamment de :
+
+  <ol> 
+   <li> vérifier que les endpoints de l’API fonctionnent correctement </li>
+   <li>tester l’envoi ou la modification de données </li>
+   <li>analyser les réponses retournées par le serveur</li>
+   <li>déboguer certaines opérations liées à l’importation ou à la correction de données</li>
+  </ol>
+
+- **Comparaison des deux outils**
+
+Les deux outils permettent d’effectuer les mêmes types de requêtes HTTP, mais ils sont utilisés dans des contextes différents :
+
+Postman est plus adapté pour explorer une API et tester des requêtes de manière interactive.
+
+Curl est plus léger et plus adapté à l’automatisation ou à l’exécution de requêtes directement dans le terminal.
+
+-- Dans le cadre du projet MONA, selon moi Postman est particulièrement utile pour tester et valider les interactions avec l’API,
