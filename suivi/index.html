@@ -757,6 +757,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#semaine-9-09-15-mars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaine 9 ( 09 - 15 mars)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semaine 9 ( 09 - 15 mars)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1387,6 +1426,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#semaine-9-09-15-mars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaine 9 ( 09 - 15 mars)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semaine 9 ( 09 - 15 mars)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1841,16 +1919,26 @@ En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai d
 <ul>
 <li>Apprendre à utiliser Curl et Postman</li>
 <li>Comprendre + apprendre à utiliser l'API</li>
+<li>Chercher où je peux intégrer du code pour justement extraire les corrections faites par l'API</li>
 <li>Explorer l'interface admin</li>
-<li>Executer des requêtes HTTP pour</li>
+<li>Exécuter des requêtes HTTP</li>
+<li>Créer de nouvelles oeuvres d'art via des requêtes HTTP</li>
 </ul>
 <h3 id="travail-realise_7">Travail réalisé<a class="headerlink" href="#travail-realise_7" title="Permanent link">&para;</a></h3>
 <ul>
-<li><strong>Utilisation de Postman et Curl</strong></li>
+<li>
+<p>Exploration de l'interface Admin et de ses fonctionnalités, notamment la modification des données, afin de comprendre comment celle-ci est liée à ma contribution</p>
+</li>
+<li>
+<p>Exécution de requêtes HTTP en utilisant CURL pour justement observer la structure des réponses JSON retournées et analyser le comportement de l’API</p>
+</li>
+<li>
+<p><strong>Utilisation de Postman et Curl</strong></p>
+</li>
 </ul>
 <p>Postman et Curl permettent d’envoyer des requêtes HTTP vers une API et d’observer les réponses retournées par le serveur. Cela permet notamment de :</p>
 <ol> 
-   <li> vérifier que les endpoints de l’API fonctionnent correctement </li>
+   <li>vérifier que les endpoints de l’API fonctionnent correctement </li>
    <li>tester l’envoi ou la modification de données </li>
    <li>analyser les réponses retournées par le serveur</li>
    <li>déboguer certaines opérations liées à l’importation ou à la correction de données</li>
@@ -1862,7 +1950,36 @@ En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai d
 <p>Les deux outils permettent d’effectuer les mêmes types de requêtes HTTP, mais ils sont utilisés dans des contextes différents :</p>
 <p>Postman est plus adapté pour explorer une API et tester des requêtes de manière interactive.</p>
 <p>Curl est plus léger et plus adapté à l’automatisation ou à l’exécution de requêtes directement dans le terminal.</p>
-<p>-- Dans le cadre du projet MONA, selon moi Postman est particulièrement utile pour tester et valider les interactions avec l’API,</p>
+<hr />
+<ul>
+<li>En explorant le code afin d’identifier où intégrer la fonctionnalité permettant de sauvegarder les corrections effectuées via l’API, j’ai constaté qu’un mécanisme existait déjà dans le projet pour enregistrer les modifications apportées aux données. Ce mécanisme repose sur deux composantes principales : le modèle <strong>Adjustment</strong> et le trait <strong>Adjustable</strong>. Les modèles représentant les entités modifiables du système, notamment les œuvres (<code>Artwork</code>), les lieux (<code>Place</code>), les éléments patrimoniaux (<code>Heritage</code>) et les badges (<code>Badge</code>), utilisent le trait <code>Adjustable</code>. Ce trait permet d’intercepter automatiquement les opérations de modification ou de suppression effectuées sur ces entités grâce aux événements des modèles Laravel. Lorsqu’un changement est détecté, les valeurs <strong>avant</strong> et <strong>après</strong> modification sont enregistrées dans la table <code>adjustments</code> via le modèle <code>Adjustment</code>, généralement au format JSON. Ce système permet ainsi de conserver un historique des corrections effectuées.</li>
+</ul>
+<p><img alt="Texte alternatif" src="../assets/useOfAdjutmentModel.png" style="display:block; margin: 0 auto; width:90%; height:50%;" /></p>
+<ul>
+<li>
+<p>Cependant, en regardant dans la base de données, plus précisément la table <code>adjustments</code>, j'ai constaté qu'il n'y avait aucune modification enregistrée, ce qui m'a poussée à me poser les questions suivantes :</p>
+<p><ol> 
+  <li> A-t-on déjà effectué des modifications depuis l'interface admin ? Si c'est le cas ( ce qui est fort probable), pourquoi la table est-elle vide ? </li>
+  <li> Est ce que ce système fonctionne correctement ? est-il réellement implémenté même ? Et est ce qu'il est utilisé correctement par les entités modifiables mentionnées ci-dessus ? </li>
+  </ol></p>
+</li>
+<li>
+<p>Autre chose, j’ai également remarqué l’existence d’un contrôleur nommé <code>AdjustmentController.php</code>. Ce contrôleur contient les méthodes classiques d’un contrôleur Laravel (index, create, store, update, destroy), mais celles-ci ne sont pas implémentées et ne contiennent pas de logique fonctionnelle. Donc le système de gestion des corrections a été probablement initié par un ancien développeur de l'équipe mais n'est ni complet ni activement utilisé dans l’application actuelle.</p>
+</li>
+</ul>
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+<h2 id="semaine-9-09-15-mars"><strong>Semaine 9 ( 09 - 15 mars)</strong><a class="headerlink" href="#semaine-9-09-15-mars" title="Permanent link">&para;</a></h2>
+<h3 id="objectifs-de-la-periode_8">Objectifs de la période<a class="headerlink" href="#objectifs-de-la-periode_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Lors la réunion hebdomadaire, j’ai présenté à l’équipe l’avancement de mon travail de la semaine précédente et la question qui s'est posée est la suivante : est ce qu'on veut utiliser ce système d'adjustements dans lequel les modifications sont d’abord enregistrées dans la table <code>adjustments</code> puis après on ira les convertir en commandes SQL et les intégrer dans le fichier de patch de corrections ? Ou bien on veut directement ajouter les modifications dans le patch sans pour autant les stocker ? Quel impact cela aurait-il niveau complexité ? Est ce qu'il serait mieux de garder un historique des modifications ?</p>
+</li>
+<li>
+<p>Cela dit, au cours de cette semaine, je vais tester les deux approches afin de déterminer laquelle est la plus appropriée en termes de complexité et de risques.</p>
+</li>
+</ul>
+<h3 id="travail-realise_8">Travail réalisé<a class="headerlink" href="#travail-realise_8" title="Permanent link">&para;</a></h3>
 
 
 
