@@ -403,17 +403,23 @@ Concernant le logo, j'ai trouvé que dans le code le nom de l'image utilisé est
 
 - Apprendre à utiliser Curl et Postman
 - Comprendre + apprendre à utiliser l'API
+- Chercher où je peux intégrer du code pour justement extraire les corrections faites par l'API
 - Explorer l'interface admin
-- Executer des requêtes HTTP pour
+- Exécuter des requêtes HTTP
+- Créer de nouvelles oeuvres d'art via des requêtes HTTP
 
 ### Travail réalisé
+
+- Exploration de l'interface Admin et de ses fonctionnalités, notamment la modification des données, afin de comprendre comment celle-ci est liée à ma contribution
+
+- Exécution de requêtes HTTP en utilisant CURL pour justement observer la structure des réponses JSON retournées et analyser le comportement de l’API
 
 - **Utilisation de Postman et Curl**
 
 Postman et Curl permettent d’envoyer des requêtes HTTP vers une API et d’observer les réponses retournées par le serveur. Cela permet notamment de :
 
   <ol> 
-   <li> vérifier que les endpoints de l’API fonctionnent correctement </li>
+   <li>vérifier que les endpoints de l’API fonctionnent correctement </li>
    <li>tester l’envoi ou la modification de données </li>
    <li>analyser les réponses retournées par le serveur</li>
    <li>déboguer certaines opérations liées à l’importation ou à la correction de données</li>
@@ -427,4 +433,29 @@ Postman est plus adapté pour explorer une API et tester des requêtes de maniè
 
 Curl est plus léger et plus adapté à l’automatisation ou à l’exécution de requêtes directement dans le terminal.
 
--- Dans le cadre du projet MONA, selon moi Postman est particulièrement utile pour tester et valider les interactions avec l’API,
+---
+
+- En explorant le code afin d’identifier où intégrer la fonctionnalité permettant de sauvegarder les corrections effectuées via l’API, j’ai constaté qu’un mécanisme existait déjà dans le projet pour enregistrer les modifications apportées aux données. Ce mécanisme repose sur deux composantes principales : le modèle **Adjustment** et le trait **Adjustable**. Les modèles représentant les entités modifiables du système, notamment les œuvres (`Artwork`), les lieux (`Place`), les éléments patrimoniaux (`Heritage`) et les badges (`Badge`), utilisent le trait `Adjustable`. Ce trait permet d’intercepter automatiquement les opérations de modification ou de suppression effectuées sur ces entités grâce aux événements des modèles Laravel. Lorsqu’un changement est détecté, les valeurs **avant** et **après** modification sont enregistrées dans la table `adjustments` via le modèle `Adjustment`, généralement au format JSON. Ce système permet ainsi de conserver un historique des corrections effectuées.
+
+![Texte alternatif](assets/useOfAdjutmentModel.png){style="display:block; margin: 0 auto; width:90%; height:50%;"}
+
+- Cependant, en regardant dans la base de données, plus précisément la table `adjustments`, j'ai constaté qu'il n'y avait aucune modification enregistrée, ce qui m'a poussée à me poser les questions suivantes :
+
+    <ol> 
+      <li> A-t-on déjà effectué des modifications depuis l'interface admin ? Si c'est le cas ( ce qui est fort probable), pourquoi la table est-elle vide ? </li>
+      <li> Est ce que ce système fonctionne correctement ? est-il réellement implémenté même ? Et est ce qu'il est utilisé correctement par les entités modifiables mentionnées ci-dessus ? </li>
+      </ol>
+
+- Autre chose, j’ai également remarqué l’existence d’un contrôleur nommé `AdjustmentController.php`. Ce contrôleur contient les méthodes classiques d’un contrôleur Laravel (index, create, store, update, destroy), mais celles-ci ne sont pas implémentées et ne contiennent pas de logique fonctionnelle. Donc le système de gestion des corrections a été probablement initié par un ancien développeur de l'équipe mais n'est ni complet ni activement utilisé dans l’application actuelle.
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 9 ( 09 - 15 mars)**
+
+### Objectifs de la période
+
+- Lors la réunion hebdomadaire, j’ai présenté à l’équipe l’avancement de mon travail de la semaine précédente et la question qui s'est posée est la suivante : est ce qu'on veut utiliser ce système d'adjustements dans lequel les modifications sont d’abord enregistrées dans la table `adjustments` puis après on ira les convertir en commandes SQL et les intégrer dans le fichier de patch de corrections ? Ou bien on veut directement ajouter les modifications dans le patch sans pour autant les stocker ? Quel impact cela aurait-il niveau complexité ? Est ce qu'il serait mieux de garder un historique des modifications ?
+
+-  Cela dit, au cours de cette semaine, je vais tester les deux approches afin de déterminer laquelle est la plus appropriée en termes de complexité et de risques.
+
+### Travail réalisé
