@@ -796,6 +796,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#semaine-10-16-22-mars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaine 10 ( 16 - 22 mars)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semaine 10 ( 16 - 22 mars)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1465,6 +1504,45 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#semaine-10-16-22-mars" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Semaine 10 ( 16 - 22 mars)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Semaine 10 ( 16 - 22 mars)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objectifs-de-la-periode_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Objectifs de la période
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#travail-realise_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Travail réalisé
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1980,6 +2058,44 @@ En comparant mes fichiers et les siens, il n'y avait pas de différences. J'ai d
 </li>
 </ul>
 <h3 id="travail-realise_8">Travail réalisé<a class="headerlink" href="#travail-realise_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Premièrement, j'ai crée un compte utilisateur en <strong>localhost</strong> en utilisant la commande suivante (trouvée sur Wikidata - Git) :<div class="highlight"><pre><span></span><code>curl -X POST -F &#39;username=TESTanissa&#39; -F &#39;password=xx&#39; -F &#39;password_confirmation=xx&#39; http://localhost:8080/api/v3/register
+</code></pre></div>
+</li>
+</ul>
+<p>-- Une fois le compte crée, on va modifier le rôle de <code>user</code> en <code>admin</code> pour justement pouvoir utiliser l'interface admin et effectuer des modifications. Personnellement, j'utilise DBeaver pour pouvoir avoir une vue structurer sur mes tables, alors j'ai juste crée un nouveau script SQL et exécuté la commande suivante :</p>
+<div class="highlight"><pre><span></span><code>    UPDATE users SET role = &#39;admin&#39; WHERE id = *votre id*
+</code></pre></div>
+<p>-- Ensuite, j’ai commencé par identifier où les modifications d’une œuvre étaient réellement traitées dans le projet. Pour cela, j’ai recherché les méthodes update dans les contrôleurs d’administration avec la commande suivante :</p>
+<div class="highlight"><pre><span></span><code>    grep -Rni --include=&quot;*.php&quot; &quot;function update&quot; app/Http/Controllers/Admin
+</code></pre></div>
+<p><img alt="Texte alternatif" src="../assets/result_GREP_command.png" style="display:block; margin: 0 auto; width:90%; height:50%;" /></p>
+<p>-- J’ai effectué un premier test concret : modifier uniquement le titre d’une œuvre depuis l’interface admin. Ce test a immédiatement révélé un problème important. Même si je ne changeais que le titre, une erreur SQL apparaissait au moment de la sauvegarde, liée à une contrainte de clé étrangère sur owner_id. En parallèle, la table adjustments enregistrait plusieurs modifications qui ne correspondaient pas à ce que j’avais réellement changé, notamment sur owner_id, dimensions et parfois location.</p>
+<p><strong>Problèmes diagnostiqués</strong></p>
+<p>-- Le premier problème identifié concernait les champs relationnels comme owner et producer, dont le formulaire envoyait parfois la chaîne "null" au lieu d’un vrai null. Cette valeur était ensuite assignée directement au modèle, ce qui provoquait une erreur SQL malgré le fait que la colonne en base était nullable.</p>
+<p>Exemple :
+<img alt="Texte alternatif" src="../assets/before-afterChange_V1.png" style="display:block; margin: 0 auto; width:100%; height:100%;" /></p>
+<p>-- Le deuxième problème concernait la présence de valeurs parasites dans la table adjustments. Le système enregistrait comme modifications de simples effets techniques du contrôleur ou de la sérialisation des données, par exemple :</p>
+<ol>
+    <li> owner_id ou producer_id faussement modifiés ; </li>
+
+    <li> dimensions reconstruit dans un format différent ; </li>
+
+    <li> location enregistrée comme changée alors qu’il s’agissait parfois seulement d’une différence de représentation entre l’ancienne et la nouvelle valeur. </li>
+
+  </ol>
+
+<p>-- Le troisième problème concernait spécifiquement dimensions, dont la structure en base semblait plus riche que les trois champs utilisés dans le formulaire. Comme cette structure était déjà mal redistribuée dans les champs d’édition, le contrôleur reconstruisait une valeur incomplète ou différente, ce qui créait un faux ajustement.</p>
+<p>-- Le quatrième problème concernait location. Même lorsque les coordonnées n’étaient pas réellement modifiées, le champ apparaissait parfois dans la table adjustments parce que l’ancienne valeur et la nouvelle valeur n’étaient pas représentées dans le même format. Pour tenter de corriger cela, une modification a aussi été faite dans le trait Adjustable, plus précisément dans la méthode getDiff(), afin de normaliser la comparaison de location avant son enregistrement. Cette tentative a permis de confirmer que le problème venait bien d’une différence de structure ou de sérialisation, même si la normalisation n’a pas encore complètement résolu tous les cas.</p>
+<hr />
+<p>-- J’ai implémenté une première approche qui consiste à extraire directement les modifications au moment où elles sont effectuées dans l’interface d’administration, sans passer par la table adjustments. Concrètement, le contrôleur compare l’état de l’œuvre avant et après la mise à jour, puis génère les changements utiles sous forme de commandes SQL. Les premiers tests montrent que cette méthode produit des résultats plus propres, puisque les valeurs parasites observées avec le mécanisme Adjustment n’apparaissent pas ici. Cela s’explique par le fait que l’extraction directe repose sur une comparaison contrôlée entre un état initial et un état final, sur un ensemble de champs choisis, plutôt que sur les différences techniques brutes détectées par le modèle pendant les événements de sauvegarde. En revanche, cette approche présente aussi plusieurs limites. Comme seuls les champs explicitement suivis sont comparés, elle ne permet pas de détecter automatiquement d’éventuels changements sur d’autres attributs non inclus dans cette liste. De plus, dans le fichier de patch de correction, on se retrouve facilement avec des commandes SQL qui appliquent la nouvelle valeur, sans pour autant conserver de trace claire de la valeur initiale. Cela réduit la lisibilité et complique le diagnostic en cas de problème, puisqu’en présence d’une erreur il devient plus difficile de comprendre ce qui a réellement été modifié et de retracer l’origine exacte du changement. Elle offre donc un meilleur contrôle sur les modifications récupérées, mais au prix d’une vision moins exhaustive et d’une traçabilité plus faible que celle fournie par la méthode basée sur adjustments.</p>
+<p><strong>Conclusion</strong>
+-- À mon avis, utiliser la méthode basée sur adjustments serait plus pertinent dans notre cas, car elle permet de conserver une trace des modifications effectuées, de savoir quand elles ont été faites et par quel utilisateur.</p>
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+<h2 id="semaine-10-16-22-mars"><strong>Semaine 10 ( 16 - 22 mars)</strong><a class="headerlink" href="#semaine-10-16-22-mars" title="Permanent link">&para;</a></h2>
+<h3 id="objectifs-de-la-periode_9">Objectifs de la période<a class="headerlink" href="#objectifs-de-la-periode_9" title="Permanent link">&para;</a></h3>
+<h3 id="travail-realise_9">Travail réalisé<a class="headerlink" href="#travail-realise_9" title="Permanent link">&para;</a></h3>
 
 
 
