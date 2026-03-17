@@ -459,3 +459,56 @@ Curl est plus léger et plus adapté à l’automatisation ou à l’exécution 
 -  Cela dit, au cours de cette semaine, je vais tester les deux approches afin de déterminer laquelle est la plus appropriée en termes de complexité et de risques.
 
 ### Travail réalisé
+
+- Premièrement, j'ai crée un compte utilisateur en **localhost** en utilisant la commande suivante (trouvée sur Wikidata - Git) :
+
+        curl -X POST -F 'username=TESTanissa' -F 'password=xx' -F 'password_confirmation=xx' http://localhost:8080/api/v3/register
+
+-- Une fois le compte crée, on va modifier le rôle de `user` en `admin` pour justement pouvoir utiliser l'interface admin et effectuer des modifications. Personnellement, j'utilise DBeaver pour pouvoir avoir une vue structurer sur mes tables, alors j'ai juste crée un nouveau script SQL et exécuté la commande suivante :
+
+        UPDATE users SET role = 'admin' WHERE id = *votre id*
+
+-- Ensuite, j’ai commencé par identifier où les modifications d’une œuvre étaient réellement traitées dans le projet. Pour cela, j’ai recherché les méthodes update dans les contrôleurs d’administration avec la commande suivante :
+
+        grep -Rni --include="*.php" "function update" app/Http/Controllers/Admin
+
+![Texte alternatif](assets/result_GREP_command.png){style="display:block; margin: 0 auto; width:90%; height:50%;"}
+
+-- J’ai effectué un premier test concret : modifier uniquement le titre d’une œuvre depuis l’interface admin. Ce test a immédiatement révélé un problème important. Même si je ne changeais que le titre, une erreur SQL apparaissait au moment de la sauvegarde, liée à une contrainte de clé étrangère sur owner_id. En parallèle, la table adjustments enregistrait plusieurs modifications qui ne correspondaient pas à ce que j’avais réellement changé, notamment sur owner_id, dimensions et parfois location.
+
+**Problèmes diagnostiqués**
+
+-- Le premier problème identifié concernait les champs relationnels comme owner et producer, dont le formulaire envoyait parfois la chaîne "null" au lieu d’un vrai null. Cette valeur était ensuite assignée directement au modèle, ce qui provoquait une erreur SQL malgré le fait que la colonne en base était nullable.
+
+Exemple :
+![Texte alternatif](assets/before-afterChange_V1.png){style="display:block; margin: 0 auto; width:100%; height:100%;"}
+
+-- Le deuxième problème concernait la présence de valeurs parasites dans la table adjustments. Le système enregistrait comme modifications de simples effets techniques du contrôleur ou de la sérialisation des données, par exemple :
+
+  <ol>
+    <li> owner_id ou producer_id faussement modifiés ; </li>
+
+    <li> dimensions reconstruit dans un format différent ; </li>
+
+    <li> location enregistrée comme changée alors qu’il s’agissait parfois seulement d’une différence de représentation entre l’ancienne et la nouvelle valeur. </li>
+
+  </ol>
+
+-- Le troisième problème concernait spécifiquement dimensions, dont la structure en base semblait plus riche que les trois champs utilisés dans le formulaire. Comme cette structure était déjà mal redistribuée dans les champs d’édition, le contrôleur reconstruisait une valeur incomplète ou différente, ce qui créait un faux ajustement.
+
+-- Le quatrième problème concernait location. Même lorsque les coordonnées n’étaient pas réellement modifiées, le champ apparaissait parfois dans la table adjustments parce que l’ancienne valeur et la nouvelle valeur n’étaient pas représentées dans le même format. Pour tenter de corriger cela, une modification a aussi été faite dans le trait Adjustable, plus précisément dans la méthode getDiff(), afin de normaliser la comparaison de location avant son enregistrement. Cette tentative a permis de confirmer que le problème venait bien d’une différence de structure ou de sérialisation, même si la normalisation n’a pas encore complètement résolu tous les cas.
+
+---
+
+-- J’ai implémenté une première approche qui consiste à extraire directement les modifications au moment où elles sont effectuées dans l’interface d’administration, sans passer par la table adjustments. Concrètement, le contrôleur compare l’état de l’œuvre avant et après la mise à jour, puis génère les changements utiles sous forme de commandes SQL. Les premiers tests montrent que cette méthode produit des résultats plus propres, puisque les valeurs parasites observées avec le mécanisme Adjustment n’apparaissent pas ici. Cela s’explique par le fait que l’extraction directe repose sur une comparaison contrôlée entre un état initial et un état final, sur un ensemble de champs choisis, plutôt que sur les différences techniques brutes détectées par le modèle pendant les événements de sauvegarde. En revanche, cette approche présente aussi plusieurs limites. Comme seuls les champs explicitement suivis sont comparés, elle ne permet pas de détecter automatiquement d’éventuels changements sur d’autres attributs non inclus dans cette liste. De plus, dans le fichier de patch de correction, on se retrouve facilement avec des commandes SQL qui appliquent la nouvelle valeur, sans pour autant conserver de trace claire de la valeur initiale. Cela réduit la lisibilité et complique le diagnostic en cas de problème, puisqu’en présence d’une erreur il devient plus difficile de comprendre ce qui a réellement été modifié et de retracer l’origine exacte du changement. Elle offre donc un meilleur contrôle sur les modifications récupérées, mais au prix d’une vision moins exhaustive et d’une traçabilité plus faible que celle fournie par la méthode basée sur adjustments.
+
+**Conclusion**
+-- À mon avis, utiliser la méthode basée sur adjustments serait plus pertinent dans notre cas, car elle permet de conserver une trace des modifications effectuées, de savoir quand elles ont été faites et par quel utilisateur.
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 10 ( 16 - 22 mars)**
+
+### Objectifs de la période
+
+### Travail réalisé
