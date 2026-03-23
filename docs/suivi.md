@@ -510,5 +510,17 @@ Exemple :
 ## **Semaine 10 ( 16 - 22 mars)**
 
 ### Objectifs de la période
+- Décider de l’approche à retenir pour la gestion des corrections apportées aux données.
+- Commencer l’implémentation de la solution choisie pour intégrer les modifications au patch de correction.
+- Examiner les changements récents poussés dans le projet par Corélie concerant les valeurs NULL lors de la modification depuis l'interface admin.
 
 ### Travail réalisé
+
+- Cette semaine, nous avons décidé de conserver la méthode Adjustment pour gérer les corrections.
+- À partir de cette décision, j’ai commencé à travailler sur l’implémentation du code qui récupère les requêtes enregistrées dans la table adjustments et les ajoute au patch de correction.
+- J’ai aussi regardé les changements que Corelie a poussés afin de mieux comprendre l’évolution récente du projet et de Cette semaine, nous avons décidé de conserver la méthode Adjustment pour gérer les corrections apportées aux données. À la suite de cette décision, j’ai poursuivi le travail d’implémentation autour de la conversion des modifications enregistrées dans la table adjustments en requêtes SQL pouvant être ajoutées au patch de correction.
+Plus précisément, j’ai travaillé sur la logique permettant de lire les informations sauvegardées dans adjustments, notamment les valeurs before et after, afin d’identifier les champs réellement modifiés. L’objectif est de pouvoir reconstruire automatiquement une requête SQL correspondant à la correction effectuée manuellement dans l’application. 
+- Dans le cas d’une modification, cela revient principalement à générer des requêtes de type UPDATE, en associant chaque champ modifié à sa nouvelle valeur, tout en ciblant la bonne entité dans la bonne table.
+Ce travail demande aussi de porter attention à certains cas particuliers, par exemple la gestion des valeurs NULL, la distinction entre une vraie valeur nulle et une chaîne de caractères comme "null", ainsi que certains champs plus complexes. L’idée générale est de produire un patch de correction suffisamment fiable pour que les changements importants ne soient pas perdus lorsqu’une réimportation des données est effectuée.
+- En parallèle, j’ai commencé à réfléchir à la structure générale de cette conversion afin qu’elle puisse être réutilisée pour différents types d’entités du projet, et pas seulement pour le cas de `Artist` . Cela permettrait d’avoir un mécanisme plus propre et plus maintenable pour conserver les corrections dans le temps.
+- J’ai également regardé les changements que Corelie a poussés dans le projet. Cela m’a permis de mieux comprendre l’évolution récente du code, de voir comment mon travail peut s’intégrer avec les modifications en cours, et de vérifier que l’implémentation sur laquelle je travaille reste cohérente avec la direction prise par le projet.
