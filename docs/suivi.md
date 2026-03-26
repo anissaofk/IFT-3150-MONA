@@ -524,3 +524,17 @@ Plus précisément, j’ai travaillé sur la logique permettant de lire les info
 Ce travail demande aussi de porter attention à certains cas particuliers, par exemple la gestion des valeurs NULL, la distinction entre une vraie valeur nulle et une chaîne de caractères comme "null", ainsi que certains champs plus complexes. L’idée générale est de produire un patch de correction suffisamment fiable pour que les changements importants ne soient pas perdus lorsqu’une réimportation des données est effectuée.
 - En parallèle, j’ai commencé à réfléchir à la structure générale de cette conversion afin qu’elle puisse être réutilisée pour différents types d’entités du projet, et pas seulement pour le cas de `Artist` . Cela permettrait d’avoir un mécanisme plus propre et plus maintenable pour conserver les corrections dans le temps.
 - J’ai également regardé les changements que Corelie a poussés dans le projet. Cela m’a permis de mieux comprendre l’évolution récente du code, de voir comment mon travail peut s’intégrer avec les modifications en cours, et de vérifier que l’implémentation sur laquelle je travaille reste cohérente avec la direction prise par le projet.
+
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 11 ( 23 - 29 mars)**
+
+### Objectifs de la période
+- Avancer sur l'implémentation de l'extraction des corrections à partir de la dernière modification 
+- Vérifier si la méthode adjustment fonctionne aussi bien sur dev que sur prod
+- Commencer à travailler sur les modifications autres que celles des œuvres d'arts
+- Voir comment je peux intégrer le travail de Corélie concernant la V4 de l'API
+
+### Travail réalisé
+
