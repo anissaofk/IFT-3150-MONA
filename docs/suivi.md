@@ -538,3 +538,10 @@ Ce travail demande aussi de porter attention à certains cas particuliers, par e
 
 ### Travail réalisé
 
+- J'ai d'abord commencé par vérifier si les modifications faites depuis l'environnement dev sont enregistrées dans la table `adjustments`. Pour cela, je me suis connectée au serveur Picasso et j'ai effectué les mêmes étapes qu'en local : 
+    <ol>
+      <li> Lancer le serveur </li>
+      <li> Se connecter à la base de données </li> 
+      <li> Accéder à la table `adjustments` et donc vérifier si les modifications sont enregistrées </li>
+    </ol>
+-- NOTE : La table était vide au départ, mais lorsque j'ai effectué des modifications sur une œuvre d'art, elles sont apparues dans la table. Comme en local, le système intercepte les valeurs parasites NULL. 
