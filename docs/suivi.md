@@ -545,3 +545,27 @@ Ce travail demande aussi de porter attention à certains cas particuliers, par e
       <li> Accéder à la table `adjustments` et donc vérifier si les modifications sont enregistrées </li>
     </ol>
 -- NOTE : La table était vide au départ, mais lorsque j'ai effectué des modifications sur une œuvre d'art, elles sont apparues dans la table. Comme en local, le système intercepte les valeurs parasites NULL. 
+
+- J'ai intégré le code de Corélie concernant l'API V4 pour voir comment ça allait réagir avec le système d'adjustments.
+Afin d'assurer la compatibilité avec ma contribution, j'ai dû apporter plusieurs modifications notamment sur la fonction `update()` car je me suis concentrée sur ça cette semaine. D'abord, au niveau de l'interface admin, j'ai constaté que les modifications s'enregistraient en deux fois dans la table adjustments. Cela était dû à la présence de deux appels à save() dans le controller : un premier update() pour les champs directs, puis un second save() pour les clés étrangères et donc cela déclenchait l'événement updating deux fois, créant ainsi deux adjustments distincts pour une même modification, du coup dans le patch de correction j'avais deux corrections distinctes au lieu d'une seule. J'ai corrigé ce problème en remplaçant le update() par un fill() et en n'effectuant qu'un seul save() à la fin regroupant tous les champs. 
+
+- Ensuite, pour les requêtes API via curl, je me suis rendue compte qu'en effectuant une modification les corrections ne s'enregistraient pas du tout dans la table adjustments et par conséquent pas dans le patch non plus. La cause était que le code que j'ai implémenté dans le trait Adjustable vérifiait *Auth::check()* avant de créer l'adjustment, mais cette vérification utilisait uniquement le guard `web`. Ainsi, même si l'utilisateur envoyait un token Bearer valide, *Auth::check()* retournait `false` car le token API est validé par le guard `api` et non le guard `web`.J'ai alors corrigé la gestion de l'authentification dans le trait Adjustable pour qu'il supporte à la fois le guard web (interface admin) et le guard api (requêtes API avec token Bearer). 
+-- Le deuxième problème que j'ai rencontré, c'est que lors de la modification, les champs présents dans la requête sont mis à jour mais tout le reste est écrasés et donc mis à `NULL`, alors j'ai modifié la méthode update dans le `ArtworkController` de l'api évitant ainsi l'écrasement des autres valeurs. 
+
+
+- NOTE : Ces changements devront être discutés avec l'équipe afin de s'assurer qu'ils n'impactent pas les autres parties du projet.
+
+- Par ailleurs, j'ai complété l'implémentation du service AdjustmentSqlExporter qui extrait automatiquement les adjustments depuis la base de données et les ajoute dans un fichier patch SQL (adjustments_patch.sql) tout en les regroupant par date de modification et en affichant également le nom de l'utilisateur ayant effectué la correction. Ce fichier est mis à jour en temps réel à chaque modification d'une œuvre, que ce soit depuis l'interface admin ou via l'API. Pour le moment, seules les requêtes de type UPDATE sont supportées.
+
+- Concernant la généralisation du système, l'architecture que j'ai conçue peut supporter tous les autres modèles de l'application. Le trait Adjustable, le modèle Adjustment avec sa relation polymorphique morphTo, ainsi que le service AdjustmentSqlExporter sont tous génériques. Pour étendre le système à Place, Badge et Heritage, il suffira d'ajouter les entrées correspondantes dans la méthode resolveTableName(), de vérifier que le trait Adjustable est bien ajouté à ces modèles, et de s'assurer que leurs controllers ne présentent pas les mêmes problèmes que ceux corrigés pour Artwork.
+
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 12 ( 30 mars - 05 avril)**
+
+### Objectifs de la période 
+- Étendre le système sur les autres modèles 
+- Continuer à travailler sur les requêtes de types INSERT et DELETE.
+
+### Travail réalisé
