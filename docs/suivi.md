@@ -622,7 +622,7 @@ En testant les requêtes, j'ai remarqué que les noms de champs diffèrent entre
 
 <hr style="border: 0; height: 4px; background-color: #F7EFA2;">
 
-## **Semaine 13 ( 13 avril - 19 avril)**
+## **Semaine 14 ( 13 avril - 19 avril)**
 
 ### Objectifs de la période 
 
