@@ -547,7 +547,7 @@ Ce travail demande aussi de porter attention à certains cas particuliers, par e
 -- NOTE : La table était vide au départ, mais lorsque j'ai effectué des modifications sur une œuvre d'art, elles sont apparues dans la table. Comme en local, le système intercepte les valeurs parasites NULL. 
 
 - J'ai intégré le code de Corélie concernant l'API V4 pour voir comment ça allait réagir avec le système d'adjustments.
-Afin d'assurer la compatibilité avec ma contribution, j'ai dû apporter plusieurs modifications notamment sur la fonction `update()` car je me suis concentrée sur ça cette semaine. D'abord, au niveau de l'interface admin, j'ai constaté que les modifications s'enregistraient en deux fois dans la table adjustments. Cela était dû à la présence de deux appels à save() dans le controller : un premier update() pour les champs directs, puis un second save() pour les clés étrangères et donc cela déclenchait l'événement updating deux fois, créant ainsi deux adjustments distincts pour une même modification, du coup dans le patch de correction j'avais deux corrections distinctes au lieu d'une seule. J'ai corrigé ce problème en remplaçant le update() par un fill() et en n'effectuant qu'un seul save() à la fin regroupant tous les champs. 
+Afin d'assurer la compatibilité avec ma contribution, j'ai dû apporter plusieurs modifications notamment sur la fonction `update()` car je me suis concentrée sur ça cette semaine. D'abord, au niveau de l'interface admin, j'ai constaté que les modifications s'enregistraient en deux fois dans la table adjustments. Cela était dû à la présence de deux appels à save() dans le controller : un premier update() pour les champs directs, puis un second save() pour les clés étrangères et donc cela déclenchait l'évènement updating deux fois, créant ainsi deux adjustments distincts pour une même modification, du coup dans le patch de correction j'avais deux corrections distinctes au lieu d'une seule. J'ai corrigé ce problème en remplaçant le update() par un array_filter() et en n'effectuant qu'un seul save() à la fin regroupant tous les champs. 
 
 - Ensuite, pour les requêtes API via curl, je me suis rendue compte qu'en effectuant une modification les corrections ne s'enregistraient pas du tout dans la table adjustments et par conséquent pas dans le patch non plus. La cause était que le code que j'ai implémenté dans le trait Adjustable vérifiait *Auth::check()* avant de créer l'adjustment, mais cette vérification utilisait uniquement le guard `web`. Ainsi, même si l'utilisateur envoyait un token Bearer valide, *Auth::check()* retournait `false` car le token API est validé par le guard `api` et non le guard `web`.J'ai alors corrigé la gestion de l'authentification dans le trait Adjustable pour qu'il supporte à la fois le guard web (interface admin) et le guard api (requêtes API avec token Bearer). 
 -- Le deuxième problème que j'ai rencontré, c'est que lors de la modification, les champs présents dans la requête sont mis à jour mais tout le reste est écrasés et donc mis à `NULL`, alors j'ai modifié la méthode update dans le `ArtworkController` de l'api évitant ainsi l'écrasement des autres valeurs. 
@@ -565,7 +565,65 @@ Afin d'assurer la compatibilité avec ma contribution, j'ai dû apporter plusieu
 ## **Semaine 12 ( 30 mars - 05 avril)**
 
 ### Objectifs de la période 
-- Étendre le système sur les autres modèles 
+- Étendre le système sur les autres modèles : lieux patrimoniaux, les lieux culturels et les badges.
 - Continuer à travailler sur les requêtes de types INSERT et DELETE.
+
+### Travail réalisé
+- **Weekly meeting :** Lors de la réunion d'équipe, j'ai présenté les modifications apportées aux méthodes update des modèles. Le retour de l'équipe était positif : tant que les changements respectent le travail de base de Corelie et permettent d'avancer sur ma contribution, ils sont acceptés.
+
+- **Extension du système update :**  En continuant les travaux de la semaine précédente, j'ai modifié la méthode update pour les lieux patrimoniaux et les lieux culturels, en suivant la même approche que pour les artistes et les œuvres :
+
+    -- Ajout de sometimes sur les champs obligatoires (title, latitude, longitude, source) pour permettre des mises à jour partielles sans erreur de validation
+    Remplacement du Model::find($id)->update([...]) par l'approche $nullableFields / $requiredFields avec $request->has() pour distinguer les champs absents des champs volontairement mis à null
+
+    -- Ajout de $request->has() sur les blocs de listes pour ne traiter que les champs présents dans la requête
+
+    -- Ajout d'une validation integer sur source_id (mgmt_id_rpcq pour Heritage) pour éviter qu'une valeur non entière soit convertie en 0 par MariaDB (Revoir ceci avec l'équipe)
+
+- **Correction de la gestion des valeurs null :** Lors des tests, j'ai constaté que la méthode update des modèles Artist et Artwork ne permettait pas d'attribuer explicitement la valeur null à un champ. Le problème venait de l'utilisation de array_filter qui filtrait les valeurs null sans distinction entre un champ absent de la requête et un champ volontairement mis à null. J'ai corrigé ce comportement en distinguant les champs nullable des champs obligatoires, en utilisant $request->has() pour détecter la présence explicite d'un champ dans la requête. Pour les œuvres, le `titre` et la `location` sont obligatoires et ne peuvent pas être mis à null — une erreur de validation est retournée si c'est le cas. Pour les artistes, seul le `nom` est obligatoire.
+
+- **Début des travaux sur les requêtes INSERT :** J'ai commencé à travailler sur la génération des requêtes de type INSERT dans le fichier de patch SQL. Le trait Adjustable n'écoutait que les événements updating et deleting, excluant ainsi les créations. J'ai modifié le trait pour y ajouter l'écoute de l'évènement created, en gérant séparément les trois types d'opérations : create, update et delete. Les tests effectués sur le modèle `Artist` ainsi que `Artworks` sont concluants. Cela dit, En testant la génération des requêtes INSERT pour les œuvres, j'ai constaté un problème dans la méthode `store()` : elle effectuait d'abord un `Artwork::create()` avec les champs directs, puis assignait les clés étrangères (ex : subcategory_id, territory_id, borough_id, etc.) séparément avant d'appeler un second `save()`. Ce comportement générait deux requêtes SQL au lieu d'une seule — **un INSERT suivi d'un UPDATE** — ce qui produisait deux lignes dans le fichier de patch, alors qu'une création devrait correspondre à une seule ligne INSERT. Pour corriger cela, j'ai regroupé toutes les données, y compris les clés étrangères, directement dans le `create()`, en traitant le cas particulier de source_id qui est NOT NULL en base et ne doit donc être inclus que s'il est explicitement fourni dans la requête.
+
+- Concernant le Delete, Lena voudrait qu'on en discute davantage à propos du sujet. 
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 13 ( 06 avril - 12 avril)**
+
+### Objectifs de la période 
+- Finaliser le travail sur les requêtes de types INSERT pour les lieux patrimoniaux, les lieux culturels et les badges.
+- Tester les Insert et Update pour les lieux patrimoniaux, les lieux culturels et les badges.
+- Réflechir à comment on pourrait implémenter le Delete.
+
+### Travail réalisé
+
+- J'ai eu une réunion avec Simon à propos du patch de corrections plus précisémement concernant la forme des requêtes SQL générées.
+
+- **Finalisation des requêtes INSERT :** J'ai finalisé l'implémentation des requêtes INSERT pour les lieux patrimoniaux (Heritage), les lieux culturels (Place) et les badges (Badge). Comme pour Artwork, j'ai corrigé les méthodes store qui effectuaient un `Artwork::create()`suivi d'un `save()` séparé pour les clés étrangères, ce qui générait deux lignes dans le fichier de patch (INSERT + UPDATE) au lieu d'une seule. Toutes les données sont maintenant regroupées dans un seul `create()`.
+
+- **Tests INSERT et UPDATE :** J'ai testé les méthodes store et update pour les trois modèles via des requêtes curl. Les tests ont confirmé que les adjustments sont correctement générés et que le fichier de patch contient bien une seule ligne par opération. J'ai également validé que les champs obligatoires (title, latitude, longitude, source) retournent bien une erreur de validation lorsqu'ils sont mis à null, et que les champs nullable acceptent correctement la valeur null.
+
+- **Problème avec source_id :** Lors des tests, j'ai constaté que le champ source_id (mgmt_id_rpcq pour Heritage) acceptait des valeurs non entières comme "BAnQ" qui étaient converties silencieusement en 0 par MariaDB. En inspectant la structure des tables, j'ai confirmé que source_id n'est pas une clé étrangère mais un identifiant externe de type int. J'ai ajouté une validation integer pour rejeter ce type de valeur avant qu'elle n'atteigne la base de données.
+
+- **Problème avec required_args et optional_args pour Badge :**
+Les colonnes action, required_args et optional_args sont NOT NULL en base mais optionnelles depuis la requête. J'ai géré ce cas en leur assignant des valeurs par défaut ('' pour action, '{}' pour required_args et optional_args) quand ils ne sont pas fournis.
+
+- **Problème avec les noms de champs incohérents**
+En testant les requêtes, j'ai remarqué que les noms de champs diffèrent entre les méthodes store et update pour certains modèles. Par exemple, pour Heritage, store utilise geo_addresses pour les adresses alors que update utilise geo_addressesLists. Cette incohérence est héritée du code de base et pourrait être une source de confusion pour les utilisateurs de l'API. (*À confirmer avec Corelie*)
+
+- **Prochaines étapes :** 
+
+      Réunion avec Simon — suivi sur la forme des requêtes SQL générées.
+      Confirmer ce qu'on vourdrait faire concernant le SOFT/HARD delete .
+      Soumettre la pull request pour révision par l'équipe.
+
+
+
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 13 ( 13 avril - 19 avril)**
+
+### Objectifs de la période 
 
 ### Travail réalisé
