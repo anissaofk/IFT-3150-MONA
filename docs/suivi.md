@@ -625,5 +625,21 @@ En testant les requêtes, j'ai remarqué que les noms de champs diffèrent entre
 ## **Semaine 14 ( 13 avril - 19 avril)**
 
 ### Objectifs de la période 
+- Effectuer des tests complets afin de valider le bon fonctionnement des fonctionnalités développées tout au long du stage.
 
 ### Travail réalisé
+- Tests des différentes requêtes API (UPDATE et INSERT) pour les entités Artwork, Artist, Heritage, Place et Badge. Vérification que les réponses retournées sont conformes aux attentes, que les données sont correctement persistées en base de données, et que les cas limites (valeurs null, champs optionnels, clés étrangères) sont bien gérés. 
+- Documentation des résultats de tests à l'aide de captures d'écran pour inclusion dans le rapport final.
+
+<hr style="border: 0; height: 4px; background-color: #F7EFA2;">
+
+## **Semaine 15 ( 20 avril - 25 avril)**
+
+### Objectifs de la période 
+- Rédiger le rapport final de stage et préparer la présentation finale.
+
+
+### Travail réalisé
+- Rédaction du rapport final couvrant l'ensemble du travail effectué durant le stage, incluant la mise en contexte du projet, les fonctionnalités développées, les défis rencontrés et les solutions apportées. 
+- Préparation de la présentation finale avec un survol des réalisations techniques, des apprentissages et des résultats obtenus. 
+- Révision et mise en forme des deux livrables pour s'assurer qu'ils reflètent fidèlement le travail accompli.

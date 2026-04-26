@@ -1,4 +1,4 @@
----
+<!-- ---
 title: Résumé du projet
 ---
 
@@ -43,4 +43,4 @@ title: Résumé du projet
 
 ## Conclusion et perspectives
 
-> Concluez sur l’apport du projet et les pistes possibles pour une suite.
+> Concluez sur l’apport du projet et les pistes possibles pour une suite. -->
